@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+    <title>毕达哥拉斯方阵 · Pythagorean Numerology Matrix</title>
+    <meta name="description" content="现代数字人格与能量方阵分析工具，基于毕达哥拉斯九宫格探索个人性格、思维与生命潜能。" />
+    <meta property="og:title" content="毕达哥拉斯方阵 · Pythagorean Numerology Matrix" />
+    <meta property="og:description" content="探索出生日期中蕴藏的性格图谱、能量通道与生命潜能。" />
+
+    <!-- Google Fonts & Icons for Editorial Aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg: #FDFCF9;
+            --ink: #1A1A1A;
+            --muted: #6B6B6B;
+            --accent: #C5A059;
+            --line: #E5E0D5;
+            --line-subtle: #F0EDE6;
+            --f-serif: 'Cinzel', 'Cormorant Garamond', Georgia, 'Noto Serif SC', serif;
+            --f-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --radius: 4px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+        }
+
+        body {
+            font-family: var(--f-sans);
+            background-color: var(--bg);
+            color: var(--ink);
+            line-height: 1.65;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .serif { font-family: var(--f-serif); }
+        .accent-text { color: var(--accent); }
+
+        /* 顶部通栏导航 (Editorial Masthead) */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(253, 252, 249, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            transition: all 0.3s ease;
+        }
+
+        .header-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-emblem {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--f-serif);
+            font-size: 15px;
+            color: var(--accent);
+            border-radius: var(--radius);
+            background: #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-family: var(--f-serif);
+            font-size: 14px;
+            letter-spacing: 0.18em;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .brand-sub {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            font-size: 12px;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: 2px;
+            border: 1px solid var(--ink);
+            background: transparent;
+            color: var(--ink);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--ink);
+            color: #FFFFFF;
+        }
+
+        /* 页面主体容器 */
+        .page-container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* 顶部英雄区 */
+        .hero-section {
+            text-align: center;
+            padding: 24px 0 32px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--f-sans);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: transparent;
+            border: 1px solid var(--line);
+            padding: 4px 12px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-family: var(--f-serif);
+            font-size: 42px;
+            font-weight: 500;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin: 0 0 12px;
+        }
+
+        .hero-subtitle-en {
+            font-family: var(--f-serif);
+            font-style: italic;
+            font-size: 18px;
+            color: var(--muted);
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin: 0 auto 20px;
+        }
+
+        .hero-trust-tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            gap: 6px;
+        }
+
+        /* 核心卡片容器 (Editorial Glass Card) */
+        .card {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 32px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #D6CCA8;
+        }
+
+        .input-card-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .card-heading {
+            font-family: var(--f-serif);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .card-caption {
+            font-size: 13px;
+            color: var(--muted);
+            font-family: var(--f-sans);
+        }
+
+        label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .date-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.3fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-unit {
+            position: absolute;
+            right: 8px;
+            bottom: 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            pointer-events: none;
+        }
+
+        .date-inputs input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            border-radius: 0;
+            background: transparent;
+            padding: 10px 24px 10px 8px;
+            font-size: 18px;
+            font-family: var(--f-serif);
+            color: var(--ink);
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .date-inputs input:focus {
+            border-bottom-color: var(--accent);
+            background: #FAF8F4;
+        }
+
+        .date-inputs input::-webkit-outer-spin-button,
+        .date-inputs input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .date-inputs input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        /* 快捷填充栏 */
+        .quick-presets {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line-subtle);
+        }
+
+        .preset-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        .preset-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-preset {
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 4px 10px;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-preset:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: #FFFFFF;
+        }
+
+        /* 提示区精致化 (Editorial Callout) */
+        .hint-box {
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+
+        .hint-box-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hint-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .hint-step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .hint-step-num {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: #FFFFFF;
+            color: var(--accent);
+            font-family: var(--f-serif);
+            font-style: italic;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        /* 主操作按钮 (Editorial Ink Button) */
+        button.btn-primary {
+            width: 100%;
+            padding: 16px 24px;
+            font-family: inherit;
+            border-radius: 2px;
+            border: 1px solid var(--ink);
+            background: var(--ink);
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        button.btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #FFFFFF;
+        }
+
+        button.btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary-title {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        .btn-primary-sub {
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #C5A059;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        button.btn-primary:hover .btn-primary-sub {
+            color: #FFFFFF;
+        }
+
+        #error {
+            background: #FFF8F8;
+            color: #B91C1C;
+            border: 1px solid #FECACA;
+            border-radius: 2px;
+            padding: 12px 16px;
+            font-size: 12px;
+            margin-top: 14px;
+            display: none;
+            text-align: center;
+        }
+
+        /* 结果展示区 */
+        #result {
+            display: none;
+            animation: fadeInReport 0.4s ease forwards;
+        }
+
+        @keyframes fadeInReport {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 方阵结果顶标 (Editorial Broadsheet Header) */
+        .result-header-card {
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .result-title {
+            font-family: var(--f-serif);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        .result-badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .stat-pill strong {
+            color: var(--accent);
+            font-family: var(--f-serif);
+            font-weight: 700;
+        }
+
+        /* 方阵核心容器 (Editorial Matrix Grid) */
+        .matrix-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 36px 20px;
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 36px;
+        }
+
+        .matrix-caption {
+            font-family: var(--f-serif);
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .matrix-caption::before,
+        .matrix-caption::after {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--line);
+        }
+
+        /* 3×3 九宫格表格 (Strict Editorial Matrix Cells) */
+        table.matrix {
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+        }
+
+        table.matrix td {
+            width: 88px;
+            height: 88px;
+            border: 1px solid var(--line);
+            position: relative;
+            background: #FFFFFF;
+            text-align: center;
+            vertical-align: middle;
+            transition: background-color 0.2s;
+            cursor: default;
+        }
+
+        table.matrix td.has-value {
+            background: #FFFFFF;
+        }
+
+        table.matrix td:hover {
+            background: #FAF8F2;
+        }
+
+        /* 单元格内部微标与数字 */
+        .cell-content-wrap {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cell-tag {
+            position: absolute;
+            top: 5px;
+            left: 7px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            font-weight: 600;
+            font-family: var(--f-sans);
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .cell-val {
+            font-family: var(--f-serif);
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--ink);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .cell-empty {
+            font-family: var(--f-serif);
+            color: #D8D2C6;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        /* 8 大专业报告章节 (Editorial Report Grid) */
+        .report-section {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .report-intro-bar {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .report-badge {
+            display: inline-block;
+            font-family: var(--f-sans);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .report-main-heading {
+            font-family: var(--f-serif);
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .report-sub {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* 报告卡片网格 */
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .report-card {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px 26px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s;
+        }
+
+        .report-card:hover {
+            border-color: #D6CCA8;
+        }
+
+        .report-card.featured-card {
+            grid-column: span 2;
+            background: #FAF8F4;
+            border-color: var(--accent);
+        }
+
+        .report-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .report-step-tag {
+            font-family: var(--f-serif);
+            font-style: italic;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .report-card-title {
+            font-family: var(--f-serif);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .report-card-text {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .report-card-highlight {
+            margin-top: 14px;
+            padding: 8px 12px;
+            background: #FAF8F4;
+            border-left: 2px solid var(--accent);
+            border-radius: 0;
+            font-size: 12px;
+            color: var(--ink);
+            font-weight: 500;
+            font-family: var(--f-sans);
+        }
+
+        /* 数字含义传奇索引卡 */
+        .legend-card {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            margin-bottom: 36px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .legend-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 14px;
+        }
+
+        .legend-title {
+            font-family: var(--f-serif);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .legend-item {
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        .legend-item:hover {
+            background: #FFFFFF;
+            border-color: var(--accent);
+        }
+
+        .legend-num-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--f-serif);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .legend-desc {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* 案例示范区域 (Editorial Specimen Case) */
+        .example-card {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            margin-top: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .example-header {
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .example-title {
+            font-family: var(--f-serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .example-sub {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .example-matrix-box {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+        }
+
+        .example-extra-container {
+            overflow-x: auto;
+            margin: 18px 0;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+        }
+
+        table.example-extra {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            text-align: left;
+        }
+
+        table.example-extra th,
+        table.example-extra td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        table.example-extra th {
+            background: #FAF8F4;
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        table.example-extra tr:last-child td {
+            border-bottom: none;
+            font-weight: 600;
+            background: #FAF8F4;
+        }
+
+        .example-summary {
+            margin-top: 20px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--muted);
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+            padding: 20px 22px;
+        }
+
+        .example-summary strong {
+            color: var(--ink);
+        }
+
+        /* 商业一对一预约 CTA (Editorial Dark Luxury Ink Card) */
+        .cta {
+            margin-top: 48px;
+            padding: 38px 32px;
+            background: #1A1A1A;
+            color: #FDFCF9;
+            border-radius: var(--radius);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--accent);
+            text-align: left;
+        }
+
+        @keyframes ctaPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 14px rgba(197, 160, 89, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(197, 160, 89, 0);
+            }
+        }
+
+        .cta.highlight {
+            animation: ctaPulse 1.8s ease-in-out 2;
+        }
+
+        .cta-intro {
+            font-family: var(--f-serif);
+            font-size: 24px;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            letter-spacing: 0.01em;
+        }
+
+        .cta-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 28px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .cta-list li {
+            position: relative;
+            padding-left: 26px;
+            line-height: 1.6;
+            font-size: 14px;
+            color: #E6E1D8;
+        }
+
+        .cta-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            top: 1px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .cta-list strong {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .cta-action-area {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 2px;
+            background: var(--accent);
+            color: #1A1A1A;
+            border: 1px solid var(--accent);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .cta-btn:hover {
+            background: #D8B570;
+            transform: translateY(-1px);
+        }
+
+        /* 支付宝扫码支付弹窗 (Editorial Payment Modal) */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(26, 26, 26, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+            width: 100%;
+            max-width: 380px;
+            padding: 30px 24px 24px;
+            position: relative;
+            transform: scale(0.96) translateY(8px);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 30px;
+            height: 30px;
+            border-radius: 2px;
+            border: 1px solid var(--line);
+            background: #FAF8F4;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--ink);
+            border-color: var(--ink);
+            background: #FFFFFF;
+        }
+
+        .modal-badge {
+            display: inline-block;
+            font-family: var(--f-sans);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .modal-title {
+            font-family: var(--f-serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .modal-price {
+            font-family: var(--f-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        .modal-price-symbol {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 2px;
+        }
+
+        /* 预留二维码图片位置 */
+        .modal-qr-container {
+            width: 230px;
+            height: 270px;
+            margin: 0 auto 16px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: #FAF8F4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .modal-qr-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: #FFFFFF;
+        }
+
+        .modal-qr-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .modal-qr-placeholder-icon {
+            font-size: 32px;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .modal-qr-placeholder-text {
+            font-size: 11.5px;
+            line-height: 1.5;
+        }
+
+        /* 提示文字（严格遵循需求 5） */
+        .modal-prompt-text {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .modal-sub-tip {
+            font-size: 11.5px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .modal-footer-btn {
+            width: 100%;
+            padding: 10px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            border: 1px solid var(--line);
+            background: #FAF8F4;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-footer-btn:hover {
+            background: #FFFFFF;
+            border-color: var(--ink);
+            color: var(--ink);
+        }
+
+        .cta-note {
+            margin-top: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 2px;
+            padding: 14px 18px;
+            color: #D6D0C4;
+            font-size: 12.5px;
+            line-height: 1.7;
+            width: 100%;
+        }
+
+        .cta-note strong {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .wechat-copy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .wechat-copy-badge:hover {
+            background: var(--accent);
+            color: #1A1A1A;
+        }
+
+        /* 页脚与免责声明 */
+        .site-footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .disclaimer-text {
+            font-size: 11.5px;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 12px;
+        }
+
+        .footer-copy {
+            font-size: 10px;
+            color: #9C9588;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* 移动端细致响应式优化 */
+        @media (max-width: 640px) {
+            .page-container {
+                padding: 20px 16px 60px;
+            }
+
+            .header-inner {
+                padding: 12px 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-section {
+                padding: 16px 0 20px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle-en {
+                font-size: 16px;
+            }
+
+            .card {
+                padding: 24px 18px;
+            }
+
+            .date-inputs {
+                grid-template-columns: 1fr 1fr 1.2fr;
+                gap: 10px;
+            }
+
+            .date-inputs input {
+                font-size: 16px;
+                padding: 8px 16px 8px 4px;
+            }
+
+            table.matrix td {
+                width: 78px;
+                height: 78px;
+            }
+
+            .cell-tag {
+                font-size: 8.5px;
+            }
+
+            .cell-val {
+                font-size: 22px;
+            }
+
+            .legend-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .report-card.featured-card {
+                grid-column: span 1;
+            }
+
+            .cta {
+                padding: 26px 20px;
+            }
+
+            .cta-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .cta-intro {
+                font-size: 20px;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="brand-wrapper">
+            <div class="brand-emblem">Ψ</div>
+            <div class="brand-text">
+                <span class="brand-name">PYTHAGORAS</span>
+                <span class="brand-sub">毕达哥拉斯方阵 · 数字人格洞察</span>
+            </div>
+        </a>
+        <nav class="nav-links">
+            <a href="#matrix-calculator" class="nav-link">方阵排盘</a>
+            <a href="#legend-section" class="nav-link">数字涵义</a>
+            <a href="#case-study" class="nav-link">案例示范</a>
+            <a href="#cta" class="nav-link">一对一咨询</a>
+            <a href="#matrix-calculator" class="nav-btn">开始排盘</a>
+        </nav>
+    </div>
+</header>
+
+<main class="page-container">
+    <!-- 英雄区 -->
+    <section class="hero-section">
+        <div class="hero-badge">The Pythagorean Numerology System</div>
+        <h1 class="hero-title">你的数字，会说话。</h1>
+        <div class="hero-subtitle-en">Discover the patterns hidden in your birth date.</div>
+        <p class="hero-desc">
+            基于毕达哥拉斯数字体系，由本站进一步精进、优化与重新构建，形成一套更完整的数字人格分析体系。通过出生日期的数字交汇，构建 3×3 生命方阵，洞察人格、能量模式、天赋优势与成长课题。
+        </p>
+        <div class="hero-trust-tag">
+            <span>✦</span>
+            <span>本工具用于自我探索与个人洞察 · Self-Reflection & Insight</span>
+        </div>
+    </section>
+
+    <!-- 生日输入卡片 -->
+    <section class="card" id="matrix-calculator">
+        <div class="input-card-header">
+            <h2 class="card-heading">输入出生日期</h2>
+            <div class="card-caption">基于阳历（公历）出生日期一键生成毕达哥拉斯九宫格</div>
+        </div>
+
+        <label for="day">出生日期（阳历 / Gregorian Calendar）</label>
+        <div class="date-inputs">
+            <div class="input-wrapper">
+                <input id="day" type="number" placeholder="18" min="1" max="31" inputmode="numeric" />
+                <span class="input-unit">日</span>
+            </div>
+            <div class="input-wrapper">
+                <input id="month" type="number" placeholder="08" min="1" max="12" inputmode="numeric" />
+                <span class="input-unit">月</span>
+            </div>
+            <div class="input-wrapper">
+                <input id="year" type="number" placeholder="1999" min="1100" max="2100" inputmode="numeric" />
+                <span class="input-unit">年</span>
+            </div>
+        </div>
+
+        <!-- 快捷选项 -->
+        <div class="quick-presets">
+            <span class="preset-label">快捷示例：</span>
+            <div class="preset-buttons">
+                <button type="button" class="btn-preset" onclick="fillExample('25', '08', '1987')">刘亦菲 (1987.08.25)</button>
+                <button type="button" class="btn-preset" onclick="fillExample('18', '08', '1999')">经典范例 (1999.08.18)</button>
+                <button type="button" class="btn-preset" onclick="fillToday()">今日日期</button>
+            </div>
+        </div>
+
+        <!-- 解读指南提示 -->
+        <div class="hint-box">
+            <div class="hint-box-title">
+                <span>✦</span> 方阵解读顺序建议：
+            </div>
+            <div class="hint-steps">
+                <div class="hint-step-item">
+                    <div class="hint-step-num">1</div>
+                    <div><strong>先看整体分布</strong>：九宫格数字分布越满、越均衡，说明整体命格能量越饱满，各项资源与应变基底越扎实。</div>
+                </div>
+                <div class="hint-step-item">
+                    <div class="hint-step-num">2</div>
+                    <div><strong>再看连线通道</strong>：横排、竖排、对角线能连成线，连线越多，对应天赋、财富、行动与精神主题的能量通道越顺畅。</div>
+                </div>
+                <div class="hint-step-item">
+                    <div class="hint-step-num">3</div>
+                    <div><strong>深入频次与缺数</strong>：某个数字出现多次，该类特质越强越本能；完全没有出现的数字，则是此生需要刻意补课和修炼的课题。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 计算按钮 -->
+        <button type="button" class="btn-primary" onclick="calcMatrix()">
+            <span class="btn-primary-title">生成我的方阵</span>
+            <span class="btn-primary-sub">GENERATE MY MATRIX</span>
+        </button>
+
+        <!-- 错误提示 -->
+        <div id="error"></div>
+    </section>
+
+    <!-- 结果区域 (初始隐藏，计算后淡入) -->
+    <div id="result">
+        <!-- 结果顶部标题与速览 -->
+        <div class="result-header-card">
+            <div class="result-title" id="dateTitle"></div>
+            <div class="result-badge-row" id="matrixDerivedPills">
+                <span class="stat-pill">命盘状态：<strong>已生成</strong></span>
+                <span class="stat-pill" id="activeCellsCount">点亮格子：<strong>--</strong></span>
+                <span class="stat-pill" id="totalScorePill">能量总频次：<strong>--</strong></span>
+            </div>
+        </div>
+
+        <!-- 核心 3×3 方阵视觉展示 (保持原原始 table 与 cell-1 到 cell-9 的 ID) -->
+        <div class="matrix-stage">
+            <div class="matrix-caption">Pythagorean 3×3 Matrix</div>
+            
+            <!-- 九宫格：第一行 1-4-7，第二行 2-5-8，第三行 3-6-9 -->
+            <table class="matrix">
+                <tr>
+                    <td id="cell-1"></td>
+                    <td id="cell-4"></td>
+                    <td id="cell-7"></td>
+                </tr>
+                <tr>
+                    <td id="cell-2"></td>
+                    <td id="cell-5"></td>
+                    <td id="cell-8"></td>
+                </tr>
+                <tr>
+                    <td id="cell-3"></td>
+                    <td id="cell-6"></td>
+                    <td id="cell-9"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 8 大维度专属动态分析报告 (Professional Editorial Report) -->
+        <section class="report-section" id="dimensions">
+            <div class="report-intro-bar">
+                <span class="report-badge">Personal Insight Report</span>
+                <h2 class="report-main-heading">八维深度人格与能量图谱</h2>
+                <p class="report-sub">根据你的方阵数字频次与连线结构，生成全方位的个人洞察报告</p>
+            </div>
+
+            <div class="report-grid" id="dynamicReportGrid">
+                <!-- 01 核心人格 -->
+                <div class="report-card" id="rep-01">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 01</span>
+                            <span class="brand-sub">Core Personality</span>
+                        </div>
+                        <h3 class="report-card-title">核心人格 · 意志与本质</h3>
+                        <p class="report-card-text" id="rep-01-text">正在根据 1 号（自我意志）与 2 号（共情直觉）等核心数字计算中……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-01-hl">核心特质：分析中</div>
+                </div>
+
+                <!-- 02 能量模式 -->
+                <div class="report-card" id="rep-02">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 02</span>
+                            <span class="brand-sub">Energy Pattern</span>
+                        </div>
+                        <h3 class="report-card-title">能量模式 · 资源充盈度</h3>
+                        <p class="report-card-text" id="rep-02-text">分析整体数字分布密度与能量流动状态……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-02-hl">能量类型：分析中</div>
+                </div>
+
+                <!-- 03 思维与表达 -->
+                <div class="report-card" id="rep-03">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 03</span>
+                            <span class="brand-sub">Mind & Expression</span>
+                        </div>
+                        <h3 class="report-card-title">思维与表达 · 认知结构</h3>
+                        <p class="report-card-text" id="rep-03-text">综合 3 号（学习表达）、5 号（逻辑理性）、9 号（智慧复盘）的相互关系……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-03-hl">思维通道：分析中</div>
+                </div>
+
+                <!-- 04 行动与执行 -->
+                <div class="report-card" id="rep-04">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 04</span>
+                            <span class="brand-sub">Action & Execution</span>
+                        </div>
+                        <h3 class="report-card-title">行动与执行 · 落地闭环</h3>
+                        <p class="report-card-text" id="rep-04-text">考察 4 号（身体自律）、6 号（勤勉深耕）、8 号（大局担当）的落地能力……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-04-hl">执行效能：分析中</div>
+                </div>
+
+                <!-- 05 关系与情感 -->
+                <div class="report-card" id="rep-05">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 05</span>
+                            <span class="brand-sub">Relationships</span>
+                        </div>
+                        <h3 class="report-card-title">关系与情感 · 羁绊与共鸣</h3>
+                        <p class="report-card-text" id="rep-05-text">聚焦 2-5-8 温暖关系线与同理心通道，洞察你在亲密与家庭互动中的底层需求……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-05-hl">情感模式：分析中</div>
+                </div>
+
+                <!-- 06 优势天赋 -->
+                <div class="report-card" id="rep-06">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 06</span>
+                            <span class="brand-sub">Strengths</span>
+                        </div>
+                        <h3 class="report-card-title">天赋优势 · 高能支柱</h3>
+                        <p class="report-card-text" id="rep-06-text">提取当前命盘中出现频次最高、通道最畅通的核心支柱……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-06-hl">核心优势：分析中</div>
+                </div>
+
+                <!-- 07 需要留意的部分 -->
+                <div class="report-card" id="rep-07">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 07</span>
+                            <span class="brand-sub">Growth Areas</span>
+                        </div>
+                        <h3 class="report-card-title">成长修行 · 盲点与精进</h3>
+                        <p class="report-card-text" id="rep-07-text">梳理方阵中的空白数字或过度饱和点，提供温和、具象的自我进化方向……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-07-hl">觉察建议：分析中</div>
+                </div>
+
+                <!-- 08 总结 -->
+                <div class="report-card featured-card" id="rep-08">
+                    <div>
+                        <div class="report-card-top">
+                            <span class="report-step-tag">DIMENSION 08</span>
+                            <span class="brand-sub">Your Personal Summary</span>
+                        </div>
+                        <h3 class="report-card-title">总结 · 你的生命全景小结</h3>
+                        <p class="report-card-text" id="rep-08-text">整体能量格局与生命基调总结……</p>
+                    </div>
+                    <div class="report-card-highlight" id="rep-08-hl" style="font-size: 14.5px; line-height: 1.6;">
+                        “你最明显的特征是……”
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 数字含义传奇索引卡 (保留原内容) -->
+        <section class="legend-card" id="legend-section">
+            <div class="legend-header">
+                <div class="legend-title">
+                    <span>✦</span>
+                    <span>1–9 数字原力释义（自我解读指南）</span>
+                </div>
+                <span style="font-size: 12px; color: var(--text-tertiary);">毕达哥拉斯基底</span>
+            </div>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>01</span> 性格与意志</div>
+                    <div class="legend-desc">性格、主见、意志力、独立性与领导魄力</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>02</span> 能量与直觉</div>
+                    <div class="legend-desc">能量、情绪、直觉力、同理心与感受通道</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>03</span> 表达与学习</div>
+                    <div class="legend-desc">学习能力、表达力、沟通能力与艺术创造</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>04</span> 健康与稳固</div>
+                    <div class="legend-desc">健康、身体能量、稳定性、现实耐力</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>05</span> 逻辑与理性</div>
+                    <div class="legend-desc">逻辑、分析能力、理性思维与自省深度</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>06</span> 落实与勤勉</div>
+                    <div class="legend-desc">勤奋度、执行力、落实能力与细节落地</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>07</span> 运气与贵人</div>
+                    <div class="legend-desc">运气、贵人运、机会加成与精神灵感</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>08</span> 责任与担当</div>
+                    <div class="legend-desc">责任感、使命感、事业担当与商业把控</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-num-badge"><span>09</span> 智慧与记忆</div>
+                    <div class="legend-desc">智力、智慧、记忆力、总结归纳与哲学悟性</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 示例：刘亦菲 (完整保留原有案例数据与深度解析) -->
+        <section class="example-card" id="case-study">
+            <div class="example-header">
+                <div class="example-title">名人案例：刘亦菲（25.08.1987）</div>
+                <div class="example-sub">下面是按同一套规则生成的毕达哥拉斯方阵，仅作为示例说明：</div>
+            </div>
+
+            <div class="example-matrix-box">
+                <table class="matrix example-matrix" style="max-width: 320px;">
+                    <tr>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">1 · 性格</span>
+                                <span class="cell-val">1</span>
+                            </div>
+                        </td>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">4 · 健康</span>
+                                <span class="cell-val">44</span>
+                            </div>
+                        </td>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">7 · 运气</span>
+                                <span class="cell-val">7</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">2 · 能量</span>
+                                <span class="cell-val">2</span>
+                            </div>
+                        </td>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">5 · 逻辑</span>
+                                <span class="cell-val">5</span>
+                            </div>
+                        </td>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">8 · 责任</span>
+                                <span class="cell-val">88</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">3 · 表达</span>
+                                <span class="cell-val">3</span>
+                            </div>
+                        </td>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">6 · 落实</span>
+                                <span class="cell-val">6</span>
+                            </div>
+                        </td>
+                        <td class="has-value">
+                            <div class="cell-content-wrap">
+                                <span class="cell-tag">9 · 智慧</span>
+                                <span class="cell-val">99</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="example-text">
+                <div style="font-weight: 600; font-size: 15px; margin-bottom: 12px; color: var(--text-primary);">
+                    简要解析（25.08.1987）：
+                </div>
+
+                <div class="example-extra-container">
+                    <table class="example-extra">
+                        <thead>
+                            <tr>
+                                <th>强度</th>
+                                <th>指标</th>
+                                <th>对应连线</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>天赋力量</td>
+                                <td>第 7, 8, 9 列</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>赚钱能力</td>
+                                <td>第 4, 5, 6 列</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>生命脊梁（内在支柱）</td>
+                                <td>第 1, 4, 7 行</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>社会适应力 / 社会稳定性</td>
+                                <td>第 3, 6, 9 行</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>家庭向 / 好家人特质</td>
+                                <td>第 2, 5, 8 行</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>灵性与精神性</td>
+                                <td>对角线 1–5–9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>自我评价 / 自尊水平</td>
+                                <td>第 1, 2, 3 列</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>金钱观与现实感</td>
+                                <td>对角线 7–5–3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>31</strong></td>
+                                <td>总得分</td>
+                                <td>整体资源量（数字越高越好）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-summary">
+                    <p style="margin-bottom: 10px;"><strong>整体小结：</strong></p>
+                    <p style="margin-bottom: 12px;">从方阵来看，这是一个非常均衡、能量充足的命格：九宫格 1–9 全部到齐，横向、纵向和对角线几乎都能连成线，说明她属于资源天花板很高的一类人。简单说，就是天赋强、可发挥的空间大，而且不只是某一块特别突出，而是各方面都比较在线。</p>
+                    <p style="margin-bottom: 8px;">这样的命格，通常对应：</p>
+                    <p style="margin-bottom: 6px;">• 出生条件不差，家境优渥、支持度高的环境；</p>
+                    <p style="margin-bottom: 6px;">• 本人自带才华与气质，容貌出众，适合被看见、被放在舞台中央；</p>
+                    <p style="margin-bottom: 6px;">• 有赚钱能力，也有精神追求，不是只看钱的人；</p>
+                    <p style="margin-bottom: 14px;">• 家庭观念、责任感、口碑都比较重要，会在意“活成一个值得尊敬的人”。</p>
+                    <p>有自己的气场和节奏。用毕达哥拉斯方阵的语言来说，就是：<strong>福报很足，又把这份福报用得比较好，是一个“既幸运又自律”的强生命体。</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 付费解析 CTA (保留原ID、列表、支付宝跳转链接、微信号与高亮动画) -->
+        <section class="cta" id="cta">
+            <div class="cta-intro">你的专属命盘，一对一解读，最值得被看清的是：</div>
+
+            <ul class="cta-list">
+                <li>清晰地了解自己的 <strong>天赋使命</strong></li>
+                <li>真正适合你的 <strong>财富路径</strong></li>
+                <li>看清你的 <strong>亲密关系结构</strong></li>
+                <li>梳理这一生真正需要完成的 <strong>人生课题</strong></li>
+            </ul>
+
+            <div class="cta-action-area">
+                <!-- 支付宝付款按钮 (点击弹出付款二维码窗口) -->
+                <button type="button" class="cta-btn" id="openPaymentModalBtn" onclick="openPaymentModal()">
+                    <span>支付宝支付 ¥36.80</span>
+                </button>
+
+                <!-- 付款说明 -->
+                <div class="cta-note">
+                    <div style="margin-bottom: 4px;">付款请备注：<strong>毕达哥拉斯</strong></div>
+                    <div>
+                        付款成功后，请添加微信：<strong>yifeicosmos</strong>
+                        <button type="button" class="wechat-copy-badge" onclick="copyWechat()">
+                            <span>📋 一键复制微信号</span>
+                        </button>
+                        <div id="copySuccess" style="display:none; color: #81D8D0; font-size: 11px; margin-top: 4px;">已复制到剪贴板！</div>
+                        <div style="margin-top: 6px;">
+                            发送付款截图 + 出生日期（阳历），我会在约定时间内进行一对一解析。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 免责声明与页脚 -->
+    <footer class="site-footer">
+        <p class="disclaimer-text">
+            免责声明：本工具用于自我探索与个人洞察，仅供个人探索和娱乐，不构成任何专业建议或心理诊断。
+            <br />
+            This tool is designed for self-reflection and personal insight.
+        </p>
+        <p class="footer-copy">© 2026 PYTHAGORAS NUMEROLOGY MATRIX · ALL RIGHTS RESERVED</p>
+    </footer>
+</main>
+
+<!-- 支付宝付款弹窗 (Editorial Minimalist Modal) -->
+<div class="modal-overlay" id="paymentModal" onclick="handleModalBackdropClick(event)">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <!-- 关闭按钮（右上角） -->
+        <button type="button" class="modal-close-btn" onclick="closePaymentModal()" aria-label="关闭二维码窗口">
+            ✕
+        </button>
+
+        <div class="modal-badge">ALIPAY PAYMENT</div>
+        <h3 class="modal-title" id="modalTitle">一对一命盘解读</h3>
+        
+        <div class="modal-price">
+            <span class="modal-price-symbol">¥</span>36.80
+        </div>
+
+        <!-- 支付宝收款二维码图片 -->
+        <div class="modal-qr-container" id="modalQrContainer">
+            <img 
+                id="alipayQrImg" 
+                src="36.8.jpg" 
+                alt="支付宝收款二维码" 
+                class="modal-qr-image" 
+                onerror="handleQrImgError(this)" 
+                onload="handleQrImgLoad(this)" 
+            />
+            <div class="modal-qr-placeholder" id="qrPlaceholder" onclick="document.getElementById('qrFileInput').click()" style="cursor: pointer;" title="点击上传或更换收款码">
+                <div class="modal-qr-placeholder-icon">⚏</div>
+                <div class="modal-qr-placeholder-text">
+                    <strong>收款二维码</strong><br />
+                    <span style="color: var(--accent); text-decoration: underline;">点击此处直接选择 36.8.jpg 上传</span>
+                </div>
+            </div>
+            <input type="file" id="qrFileInput" accept="image/*" style="display: none;" onchange="handleQrFileUpload(event)" />
+        </div>
+
+        <!-- 提示文字（严格遵循指令第 5 条） -->
+        <div class="modal-prompt-text">请使用支付宝扫描二维码完成支付</div>
+
+        <div class="modal-sub-tip">
+            支付成功后添加微信：<strong style="color: var(--accent);">yifeicosmos</strong><br />
+            发送付款截图 + 出生日期即可预约一对一解析
+        </div>
+
+        <!-- 关闭按钮（底部） -->
+        <button type="button" class="modal-footer-btn" onclick="closePaymentModal()">
+            关闭窗口
+        </button>
+    </div>
+</div>
+
+<script>
+// ==========================================
+// 毕达哥拉斯计算核心逻辑 (严格保持原所有公式与规则)
+// ==========================================
+function sumDigits(n) {
+    n = Math.abs(parseInt(n, 10));
+    return n.toString().split('').reduce(function (acc, ch) {
+        return acc + parseInt(ch, 10);
+    }, 0);
+}
+
+function pad2(n) {
+    n = parseInt(n, 10);
+    return (n < 10 ? '0' : '') + n;
+}
+
+// 快捷预设填充
+function fillExample(d, m, y) {
+    document.getElementById('day').value = d;
+    document.getElementById('month').value = m;
+    document.getElementById('year').value = y;
+    calcMatrix();
+}
+
+function fillToday() {
+    var now = new Date();
+    document.getElementById('day').value = now.getDate();
+    document.getElementById('month').value = now.getMonth() + 1;
+    document.getElementById('year').value = now.getFullYear();
+    calcMatrix();
+}
+
+function copyWechat() {
+    var wechat = 'yifeicosmos';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(wechat).then(function() {
+            var msg = document.getElementById('copySuccess');
+            if (msg) {
+                msg.style.display = 'block';
+                setTimeout(function() { msg.style.display = 'none'; }, 2500);
+            }
+        });
+    } else {
+        var tempInput = document.createElement('input');
+        tempInput.value = wechat;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        var msg = document.getElementById('copySuccess');
+        if (msg) {
+            msg.style.display = 'block';
+            setTimeout(function() { msg.style.display = 'none'; }, 2500);
+        }
+    }
+}
+
+// 支付宝付款弹窗控制与收款码初始化
+function initQrCode() {
+    try {
+        var savedQr = localStorage.getItem('alipay_qr_data');
+        var img = document.getElementById('alipayQrImg');
+        if (img && savedQr) {
+            img.src = savedQr;
+        }
+    } catch (e) {}
+}
+
+function handleQrImgLoad(img) {
+    img.style.display = 'block';
+    var ph = document.getElementById('qrPlaceholder');
+    if (ph) ph.style.display = 'none';
+}
+
+function handleQrImgError(img) {
+    // 若 36.8.jpg 无法读取，则尝试回退到 alipay-qr.png
+    if (img.src.indexOf('alipay-qr.png') === -1) {
+        img.src = 'alipay-qr.png';
+        return;
+    }
+    img.style.display = 'none';
+    var ph = document.getElementById('qrPlaceholder');
+    if (ph) ph.style.display = 'flex';
+}
+
+function handleQrFileUpload(e) {
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(evt) {
+        var dataUrl = evt.target.result;
+        var img = document.getElementById('alipayQrImg');
+        if (img) {
+            img.src = dataUrl;
+            img.style.display = 'block';
+        }
+        var ph = document.getElementById('qrPlaceholder');
+        if (ph) ph.style.display = 'none';
+        try {
+            localStorage.setItem('alipay_qr_data', dataUrl);
+        } catch(err) {}
+    };
+    reader.readAsDataURL(file);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQrCode);
+} else {
+    initQrCode();
+}
+
+function openPaymentModal() {
+    var modal = document.getElementById('paymentModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closePaymentModal() {
+    var modal = document.getElementById('paymentModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function handleModalBackdropClick(event) {
+    if (event.target && event.target.id === 'paymentModal') {
+        closePaymentModal();
+    }
+}
+
+window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closePaymentModal();
+    }
+});
+
+// 单元格配置标签
+var cellMeta = {
+    1: { zh: "性格", en: "Character" },
+    2: { zh: "能量", en: "Energy" },
+    3: { zh: "表达", en: "Expression" },
+    4: { zh: "健康", en: "Health" },
+    5: { zh: "逻辑", en: "Logic" },
+    6: { zh: "落实", en: "Work" },
+    7: { zh: "运气", en: "Luck" },
+    8: { zh: "责任", en: "Responsibility" },
+    9: { zh: "智慧", en: "Wisdom" }
+};
+
+// 核心计算函数 (保留原变量名、公式、验证逻辑与行为)
+function calcMatrix() {
+    var dayVal = document.getElementById('day').value.trim();
+    var monthVal = document.getElementById('month').value.trim();
+    var yearVal = document.getElementById('year').value.trim();
+    var errorDiv = document.getElementById('error');
+    var resultDiv = document.getElementById('result');
+    var titleDiv = document.getElementById('dateTitle');
+
+    errorDiv.style.display = 'none';
+    errorDiv.textContent = '';
+    resultDiv.style.display = 'none';
+
+    if (!dayVal || !monthVal || !yearVal) {
+        errorDiv.textContent = '请把「日 / 月 / 年」三个数字都填写完整。';
+        errorDiv.style.display = 'block';
+        return;
+    }
+
+    var day = parseInt(dayVal, 10);
+    var month = parseInt(monthVal, 10);
+    var year = parseInt(yearVal, 10);
+
+    if (isNaN(day) || isNaN(month) || isNaN(year) ||
+        day < 1 || day > 31 || month < 1 || month > 12 || year < 1100 || year > 2100) {
+        errorDiv.textContent = '日期格式好像不太对，请检查一下范围（1–31 / 1–12 / 1100–2100）。';
+        errorDiv.style.display = 'block';
+        return;
+    }
+
+    var dd = pad2(day);
+    var mm = pad2(month);
+    var yyyy = year.toString();
+    var digitsOnly = dd + mm + yyyy; // DDMMYYYY
+
+    // A = 所有数字之和
+    var baseDigits = digitsOnly.split('').map(function (ch) { return parseInt(ch, 10); });
+    var A = baseDigits.reduce(function (acc, v) { return acc + v; }, 0);
+
+    // B = A 的数字和
+    var B = sumDigits(A);
+
+    // C = A − 2 × (出生日第一位数字（不带前导零）)
+    var dayStrNoZero = String(day);
+    var firstDigitOfDay = parseInt(dayStrNoZero[0], 10);
+    var C = A - 2 * firstDigitOfDay;
+
+    // D = C 的数字和
+    var D = sumDigits(C);
+
+    // 拼出附加八位数：AA BB CC DD（全部两位数，不足补 0）
+    var extra = pad2(A) + pad2(B) + pad2(C) + pad2(D);
+
+    // 用「日期数字 + 附加八位」统计 1–9 的次数（0 不计入）
+    var fullStr = digitsOnly + extra;
+    var counts = {};
+    for (var i = 1; i <= 9; i++) {
+        counts[i] = 0;
+    }
+    for (var j = 0; j < fullStr.length; j++) {
+        var ch = fullStr[j];
+        if (ch >= '1' && ch <= '9') {
+            counts[parseInt(ch, 10)]++;
+        }
+    }
+
+    // 把结果填入九宫格：优雅渲染并保持原数字值（出现几次就写几个数字，例如 3 出现两次 → “33”）
+    var activeCount = 0;
+    var totalDigitsSum = 0;
+
+    for (var n = 1; n <= 9; n++) {
+        var cell = document.getElementById('cell-' + n);
+        var times = counts[n];
+        totalDigitsSum += times;
+
+        var valStr = times > 0 ? String(n).repeat(times) : '';
+        if (times > 0) activeCount++;
+
+        // 运用高质量 UI 封装：既保证 cell.textContent 包含原数字，又拥有精致的标签与空位占位
+        cell.className = times > 0 ? 'has-value' : '';
+        cell.innerHTML = 
+            '<div class="cell-content-wrap">' +
+                '<span class="cell-tag">' + n + ' · ' + cellMeta[n].zh + '</span>' +
+                (times > 0 
+                    ? '<span class="cell-val">' + valStr + '</span>' 
+                    : '<span class="cell-empty">—</span>') +
+            '</div>';
+    }
+
+    // 上方日期标题，例如：18.08.1999 – 方阵
+    titleDiv.textContent = dd + '.' + mm + '.' + yyyy + ' – 方阵';
+
+    // 统计药丸栏
+    var activePill = document.getElementById('activeCellsCount');
+    if (activePill) {
+        activePill.innerHTML = '点亮宫格：<strong>' + activeCount + ' / 9</strong>';
+    }
+    var totalPill = document.getElementById('totalScorePill');
+    if (totalPill) {
+        totalPill.innerHTML = '数字总频次：<strong>' + totalDigitsSum + '</strong> (衍生和: ' + A + ', 根数: ' + B + ')';
+    }
+
+    // 生成八大维度的深度个性化分析报告
+    generateEightDimensionsReport(counts, A, B, C, D, activeCount, totalDigitsSum);
+
+    resultDiv.style.display = 'block';
+
+    // ⬇️ 自动滚动到方阵展示区并优雅导向（平滑体验）
+    setTimeout(function () {
+        var resultEl = document.getElementById('result');
+        if (resultEl) {
+            resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 50);
+}
+
+// ==========================================
+// 8 大维度深度报告生成引擎 (根据实际九宫数据智能推演)
+// ==========================================
+function generateEightDimensionsReport(counts, A, B, C, D, activeCount, totalSum) {
+    // 找出最高频数字
+    var maxFreq = 0;
+    var maxDigits = [];
+    var missingDigits = [];
+    for (var n = 1; n <= 9; n++) {
+        if (counts[n] > maxFreq) {
+            maxFreq = counts[n];
+        }
+        if (counts[n] === 0) {
+            missingDigits.push(n);
+        }
+    }
+    for (var n = 1; n <= 9; n++) {
+        if (counts[n] === maxFreq && maxFreq > 0) {
+            maxDigits.push(n);
+        }
+    }
+
+    // 连线检查
+    // 1-4-7 (生命脊梁), 2-5-8 (家庭情感), 3-6-9 (社会稳定), 1-2-3 (自尊), 4-5-6 (财富落实), 7-8-9 (天赋使命), 1-5-9 (灵性), 7-5-3 (商业敏感)
+    var lines = {
+        spine: (counts[1] > 0 && counts[4] > 0 && counts[7] > 0),
+        family: (counts[2] > 0 && counts[5] > 0 && counts[8] > 0),
+        society: (counts[3] > 0 && counts[6] > 0 && counts[9] > 0),
+        selfWorth: (counts[1] > 0 && counts[2] > 0 && counts[3] > 0),
+        wealth: (counts[4] > 0 && counts[5] > 0 && counts[6] > 0),
+        talent: (counts[7] > 0 && counts[8] > 0 && counts[9] > 0),
+        spiritual: (counts[1] > 0 && counts[5] > 0 && counts[9] > 0),
+        acumen: (counts[7] > 0 && counts[5] > 0 && counts[3] > 0)
+    };
+
+    // 01 核心人格
+    var rep01Text = "";
+    var rep01Hl = "";
+    if (counts[1] >= 2) {
+        rep01Text = "你的 1 号数字达到 " + counts[1] + " 次，说明内在拥有极强的主见、主导欲与自我界限感。遇事习惯独立决断，不轻易随波逐流；拥有天然的开创与领导潜能。";
+        rep01Hl = "核心特质：独立坚韧 · 目标坚定 · 自我驱动";
+    } else if (counts[1] === 1) {
+        rep01Text = "你的 1 号数字为 1 次，属于非常适中、健康的自我意识。既能坚持自己的核心原则，又具备良好的弹性，善于合作，不易陷入盲目固执。";
+        rep01Hl = "核心特质：平衡中正 · 柔中带刚 · 协同适变";
+    } else {
+        rep01Text = "你的 1 号数字较为内敛，你更习惯倾听与配合他人，在团队中是温和的协调者，建议在关键时刻敢于更坚定地表达自己的核心主张。";
+        rep01Hl = "核心特质：温和包容 · 重视协作";
+    }
+
+    // 02 能量模式
+    var rep02Text = "";
+    var rep02Hl = "";
+    if (activeCount >= 7) {
+        rep02Text = "你的九宫格点亮了 " + activeCount + " 个数字（总频次 " + totalSum + "），属于能量底盘非常饱满的格局。各维度资源与应变能力全面在线，适应不同人生境遇的弹性极高。";
+        rep02Hl = "能量状态：高丰沛度 · 多重资源底盘";
+    } else {
+        rep02Text = "你的九宫格点亮了 " + activeCount + " 个数字，能量分布呈现出极高的专注性与聚焦度。不把精力分散在非核心领域，而是将原力集中在优势通道上。";
+        rep02Hl = "能量状态：聚焦穿透 · 垂直深潜型";
+    }
+
+    // 03 思维与表达
+    var rep03Text = "";
+    var rep03Hl = "";
+    if (lines.society) {
+        rep03Text = "你拥有完整的 3-6-9 智识连线！3（敏锐学习表达）+ 6（沉淀落实）+ 9（宏观总结记忆），构建了完整的认知与社会实践闭环，擅长将抽象理论转化为落地成果。";
+        rep03Hl = "思维优势：3-6-9 智性落实连线贯通";
+    } else {
+        var desc = [];
+        if (counts[3] > 0) desc.push("具备敏锐的表达与审美触觉");
+        if (counts[5] > 0) desc.push("具备冷静的逻辑推导与自省复盘能力");
+        if (counts[9] > 0) desc.push("具备深刻的宏观记忆与智慧升华潜能");
+        rep03Text = desc.length > 0 ? "思维结构中：" + desc.join("，") + "。在决策时善于兼顾直觉与事实分析。" : "思维模式质朴务实，偏向靠直觉与行动验证结论。";
+        rep03Hl = "思维模式：敏锐直觉与现实经验结合";
+    }
+
+    // 04 行动与执行
+    var rep04Text = "";
+    var rep04Hl = "";
+    if (lines.wealth) {
+        rep04Text = "你的 4-5-6 务实通道连成一线！兼备 4 的耐力坚守、5 的运筹逻辑与 6 的执行落地，属于极具商业造血与稳健理财潜质的行动家。";
+        rep04Hl = "执行模式：4-5-6 务实创富与落地闭环";
+    } else if (counts[4] > 0 || counts[6] > 0 || counts[8] > 0) {
+        rep04Text = "在执行力上，你兼具稳步推进与责任担当，面对既定承诺有着强烈的兑现欲，是团队或家庭中极其令人安心的可靠基石。";
+        rep04Hl = "执行风格：稳健守信 · 踏实行进";
+    } else {
+        rep04Text = "执行模式更偏向灵动型，当兴趣驱动或灵感爆发时效率极高，日常建议建立规律的作息与清单制度辅助落地。";
+        rep04Hl = "执行风格：灵感驱动 · 重在建立节奏";
+    }
+
+    // 05 关系与情感
+    var rep05Text = "";
+    var rep05Hl = "";
+    if (lines.family) {
+        rep05Text = "你拥有极为珍贵的 2-5-8 亲密与家庭关系连线！情绪感知力（2）+ 理性通融（5）+ 守护担当（8），在亲密关系与人际交往中极具亲和力与可靠感。";
+        rep05Hl = "情感通道：2-5-8 情感充沛 · 深厚家庭守护力";
+    } else if (counts[2] >= 2) {
+        rep05Text = "2 号能量极其充沛，拥有雷达般敏锐的同理心，能轻易觉察伴侣与朋友的细微情绪波动；在关系中注重精神共鸣与深度信任。";
+        rep05Hl = "情感特质：高敏感共情 · 细腻温润";
+    } else {
+        rep05Text = "在人际交往中保持清醒边界感，不盲目迎合，更看重互相尊重与长期价值的契合。";
+        rep05Hl = "情感风格：清醒边界 · 纯粹真挚";
+    }
+
+    // 06 优势天赋
+    var rep06Text = "";
+    var rep06Hl = "";
+    var strongParts = [];
+    if (maxDigits.length > 0) {
+        for (var i = 0; i < maxDigits.length; i++) {
+            var md = maxDigits[i];
+            strongParts.push(md + " 号【" + cellMeta[md].zh + "】(频次 " + counts[md] + ")");
+        }
+    }
+    rep06Text = "你方阵中最突出的高能密码为 " + strongParts.join("、") + "。" +
+        (lines.spine ? " 搭配 1-4-7 生命脊梁连线，抗压与自我定力极强。" : "") +
+        (lines.talent ? " 搭配 7-8-9 天赋力量连线，自带贵人缘与社会声望加持。" : "");
+    rep06Hl = "核心优势：高能焦点 [" + strongParts.join(" | ") + "]";
+
+    // 07 需要留意的部分
+    var rep07Text = "";
+    var rep07Hl = "";
+    if (missingDigits.length > 0) {
+        var missingNames = missingDigits.map(function(d) { return d + " 号(" + cellMeta[d].zh + ")"; });
+        rep07Text = "你的方阵中未显现的数字为 " + missingNames.join("、") + "。在毕达哥拉斯体系中，缺失数字并非缺陷，而是此生灵魂需要主动修炼与升级的“进阶课题”。通过后天有意识的习惯刻意练习，能补全能量闭环。";
+        rep07Hl = "成长进阶课：主动修炼 " + missingNames.slice(0, 3).join(" · ") + (missingNames.length > 3 ? " 等" : "");
+    } else {
+        rep07Text = "恭喜，你的九宫格 1–9 全部点亮，无缺失数字！此类全通格局需留意的是：避免因选择过多或涉猎过泛而导致精力稀释，懂得阶段性聚焦与减法是你的最高修行。";
+        rep07Hl = "成长建议：学会聚焦减法 · 专精核心赛道";
+    }
+
+    // 08 总结
+    var rep08Text = "整体而言，你的命盘衍生数总和为 " + A + "，生命根数为 " + B + "。九宫格呈现出独特的能量指纹。你不是一个可以用单一标签定义的个体，而是在特定领域拥有巨大爆发力与进化潜力的生命体。";
+    var highlightQuote = "“你最明显的特征是：";
+    if (lines.spine && lines.wealth) {
+        highlightQuote += "具备罕见的坚韧脊梁与务实落地双闭环，既能抗事又能成事。”";
+    } else if (lines.family) {
+        highlightQuote += "自带深厚的温情磁场与守护力量，不仅自我成就，亦能托举身边的亲近之人。”";
+    } else if (counts[1] >= 2 && counts[9] >= 2) {
+        highlightQuote += "高主见与深思虑的结合体，适合作为独立主导者在专业领域长青深耕。”";
+    } else {
+        highlightQuote += "在专注与沉淀中释放天赋，通过知晓自己的能量通道，活出笃定从容的人生节奏。”";
+    }
+
+    // 填入 DOM
+    document.getElementById('rep-01-text').textContent = rep01Text;
+    document.getElementById('rep-01-hl').textContent = rep01Hl;
+
+    document.getElementById('rep-02-text').textContent = rep02Text;
+    document.getElementById('rep-02-hl').textContent = rep02Hl;
+
+    document.getElementById('rep-03-text').textContent = rep03Text;
+    document.getElementById('rep-03-hl').textContent = rep03Hl;
+
+    document.getElementById('rep-04-text').textContent = rep04Text;
+    document.getElementById('rep-04-hl').textContent = rep04Hl;
+
+    document.getElementById('rep-05-text').textContent = rep05Text;
+    document.getElementById('rep-05-hl').textContent = rep05Hl;
+
+    document.getElementById('rep-06-text').textContent = rep06Text;
+    document.getElementById('rep-06-hl').textContent = rep06Hl;
+
+    document.getElementById('rep-07-text').textContent = rep07Text;
+    document.getElementById('rep-07-hl').textContent = rep07Hl;
+
+    document.getElementById('rep-08-text').textContent = rep08Text;
+    document.getElementById('rep-08-hl').textContent = highlightQuote;
+}
+
+// 绑定回车键快捷提交
+['day', 'month', 'year'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                calcMatrix();
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

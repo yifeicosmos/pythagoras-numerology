@@ -1,0 +1,6 @@
+{
+  "name": "毕达哥拉斯方阵 · Pythagorean Matrix",
+  "description": "现代数字人格与能量方阵分析平台，基于毕达哥拉斯九宫格探索生命潜能与思维模式。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
