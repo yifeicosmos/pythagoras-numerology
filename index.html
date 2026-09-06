@@ -1971,8 +1971,9 @@ function handleQrImgLoad(img) {
 
 function handleQrImgError(img) {
     // 若 36.8.jpg 无法读取，则尝试回退到 alipay-qr.png
-    if (img.src.indexOf('alipay-qr.png') === -1) {
-        img.src = 'alipay-qr.png';
+    if (img.src.indexOf('alipay-qr.jpg') === -1) {
+    img.src = 'alipay-qr.jpg';
+}
         return;
     }
     img.style.display = 'none';
