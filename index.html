@@ -3236,7 +3236,7 @@
         <div class="modal-qr-container">
             <img 
                 id="qr-img-19" 
-                src="./assets/alipay-qr.jpg" 
+                src="./alipay-19.9.jpg" 
                 alt="个人命盘解析 支付宝收款二维码" 
                 class="modal-qr-image" 
                 onerror="handleQrError(this, 'placeholder-19')" 
@@ -3319,7 +3319,62 @@
     </div>
 </div>
 
+<script type="module">
+    // Vite module script: 读取 import.meta.env.BASE_URL 并暴露到全局
+    try {
+        if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) {
+            window.__VITE_BASE_URL__ = import.meta.env.BASE_URL;
+        }
+    } catch (e) {
+        // Fallback silently if not in module environment
+    }
+    if (typeof syncQrImages === 'function') {
+        syncQrImages();
+    }
+</script>
+
 <script>
+// ==========================================
+// 资源路径解析（全面兼容 Vite、GitHub Pages /pythagoras-numerology/ 子目录与 Google AI Studio Preview）
+// ==========================================
+function getAppBaseUrl() {
+    // 1. Vite 环境变量注入的 BASE_URL
+    if (typeof window !== 'undefined' && window.__VITE_BASE_URL__ && window.__VITE_BASE_URL__ !== '/' && window.__VITE_BASE_URL__ !== './') {
+        var vBase = window.__VITE_BASE_URL__;
+        return vBase.endsWith('/') ? vBase : (vBase + '/');
+    }
+
+    // 2. 检测当前运行环境是否在 GitHub Pages /pythagoras-numerology/ 子目录
+    if (typeof window !== 'undefined' && window.location && window.location.pathname) {
+        var p = window.location.pathname;
+        if (p.indexOf('/pythagoras-numerology') === 0) {
+            return '/pythagoras-numerology/';
+        }
+    }
+
+    // 3. Google AI Studio Preview 或本地根目录开发环境
+    return './';
+}
+
+function getAssetPath(filename) {
+    var cleanFilename = filename.replace(/^\.\//, '').replace(/^\//, '');
+    var base = getAppBaseUrl();
+    if (base.endsWith('/')) {
+        return base + cleanFilename;
+    }
+    return base + '/' + cleanFilename;
+}
+
+function syncQrImages() {
+    var img19 = document.getElementById('qr-img-19');
+    if (img19) {
+        var target19 = getAssetPath('alipay-19.9.jpg');
+        if (img19.getAttribute('src') !== target19 && (!img19.src || !img19.src.includes('alipay-19.9.jpg'))) {
+            img19.src = target19;
+        }
+    }
+}
+
 // ==========================================
 // 毕达哥拉斯计算核心逻辑 (严格保持原所有公式与规则)
 // ==========================================
@@ -3388,13 +3443,29 @@ function fallbackCopy(text, callback) {
 // 二维码图片加载与回退处理
 function handleQrError(imgEl, placeholderId) {
     if (!imgEl) return;
-    var candidates = [
-        './assets/alipay-qr.jpg',
-        './alipay-qr.jpg',
-        './alipay-19.9.jpg',
-        'assets/alipay-qr.jpg',
-        'alipay-qr.jpg'
-    ];
+    var candidates = [];
+    if (imgEl.id === 'qr-img-19') {
+        candidates = [
+            getAssetPath('alipay-19.9.jpg'),
+            '/pythagoras-numerology/alipay-19.9.jpg',
+            './alipay-19.9.jpg',
+            'alipay-19.9.jpg',
+            getAssetPath('assets/alipay-19.9.jpg'),
+            './assets/alipay-19.9.jpg',
+            '/pythagoras-numerology/assets/alipay-19.9.jpg'
+        ];
+    } else {
+        candidates = [
+            getAssetPath('alipay-189.jpg'),
+            '/pythagoras-numerology/alipay-189.jpg',
+            './alipay-189.jpg',
+            'alipay-189.jpg',
+            getAssetPath('assets/alipay-189.jpg'),
+            './assets/alipay-189.jpg',
+            getAssetPath('alipay-qr.jpg'),
+            './alipay-qr.jpg'
+        ];
+    }
     var currentTry = parseInt(imgEl.dataset.tryIndex || '0', 10);
     if (currentTry < candidates.length) {
         var nextCandidate = candidates[currentTry];
@@ -3422,6 +3493,13 @@ function handleQrSuccess(imgEl, placeholderId) {
 // 两个独立层级弹窗的开闭控制
 function openModal19() {
     var modal = document.getElementById('modal-tier-19');
+    var qrImg = document.getElementById('qr-img-19');
+    if (qrImg) {
+        var targetSrc = getAssetPath('alipay-19.9.jpg');
+        if (qrImg.getAttribute('src') !== targetSrc && (!qrImg.src || !qrImg.src.includes('alipay-19.9.jpg'))) {
+            qrImg.src = targetSrc;
+        }
+    }
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -4228,6 +4306,9 @@ function renderNineDimensionsPersonalReading(rec) {
 
 // 双重保底绑定付费弹窗触发按钮，确保各平台移动端和桌面端均能即时响应
 function initPaymentButtons() {
+    if (typeof syncQrImages === 'function') {
+        syncQrImages();
+    }
     var btnUnlock = document.getElementById('btn-unlock-personal');
     if (btnUnlock) {
         btnUnlock.addEventListener('click', function(e) {
