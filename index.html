@@ -1970,12 +1970,12 @@ function handleQrImgLoad(img) {
 }
 
 function handleQrImgError(img) {
-    // 若 36.8.jpg 无法读取，则尝试回退到 alipay-qr.png
+    // 若主图片无法读取，则尝试回退到 alipay-qr.jpg
     if (img.src.indexOf('alipay-qr.jpg') === -1) {
-    img.src = 'alipay-qr.jpg';
-}
+        img.src = 'alipay-qr.jpg';
         return;
     }
+
     img.style.display = 'none';
     var ph = document.getElementById('qrPlaceholder');
     if (ph) ph.style.display = 'flex';
