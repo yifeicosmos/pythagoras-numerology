@@ -1115,14 +1115,14 @@
             margin-right: 2px;
         }
 
-        /* 预留二维码图片位置 */
+        /* 支付宝收款二维码图片容器 */
         .modal-qr-container {
             width: 230px;
-            height: 270px;
+            height: 250px;
             margin: 0 auto 16px;
             border: 1px solid var(--line);
             border-radius: 4px;
-            background: #FAF8F4;
+            background: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1137,28 +1137,6 @@
             object-fit: contain;
             display: block;
             background: #FFFFFF;
-        }
-
-        .modal-qr-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 16px;
-            color: var(--muted);
-            text-align: center;
-        }
-
-        .modal-qr-placeholder-icon {
-            font-size: 32px;
-            color: var(--accent);
-            line-height: 1;
-        }
-
-        .modal-qr-placeholder-text {
-            font-size: 11.5px;
-            line-height: 1.5;
         }
 
         /* 提示文字（严格遵循需求 5） */
@@ -1235,6 +1213,1143 @@
         .wechat-copy-badge:hover {
             background: var(--accent);
             color: #1A1A1A;
+        }
+
+        /* 免费部分：数字分布卡片 */
+        .free-dist-card {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            margin-top: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .free-section-title {
+            font-family: var(--f-serif);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .free-section-subtitle {
+            font-size: 12.5px;
+            color: var(--muted);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .free-dist-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .free-dist-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .free-dist-item {
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 10px 6px;
+            text-align: center;
+            background: #FAF8F4;
+            transition: all 0.2s;
+        }
+
+        .free-dist-item.is-active {
+            border-color: var(--accent);
+            background: #FFFDF9;
+        }
+
+        .free-dist-item.is-missing {
+            opacity: 0.65;
+            border-style: dashed;
+            background: #F7F5F0;
+        }
+
+        .free-dist-badge {
+            font-family: var(--f-serif);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .free-dist-item.is-active .free-dist-badge {
+            color: var(--accent);
+        }
+
+        .free-dist-name {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .free-dist-cnt {
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .free-dist-item.is-missing .free-dist-cnt {
+            color: #9C9588;
+            font-weight: 400;
+        }
+
+        /* 基础解读指南板块 */
+        .free-guide-container {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .free-info-box {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .free-lines-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .free-lines-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .line-item-card {
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .line-item-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .line-item-name {
+            font-family: var(--f-serif);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .line-item-nums {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 600;
+            background: #FFFFFF;
+            padding: 1px 6px;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+        }
+
+        .line-item-desc {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .free-rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .free-rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .rule-card {
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 16px 18px;
+        }
+
+        .rule-card-title {
+            font-family: var(--f-serif);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .rule-card-p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 6px;
+        }
+
+        .rule-card-p strong {
+            color: var(--ink);
+        }
+
+        /* 付费产品卡片基础 (暖白+香槟金+深灰) */
+        .tier-product-section {
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .tier-card {
+            border-radius: var(--radius);
+            padding: 36px 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            text-align: left;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tier-card-99 {
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--accent);
+        }
+
+        .tier-card-189 {
+            background: #181715;
+            color: #FDFCF9;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18);
+        }
+
+        .tier-badge {
+            display: inline-block;
+            font-family: var(--f-sans);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .tier-badge-gold {
+            color: #D8B570;
+        }
+
+        .tier-title {
+            font-family: var(--f-serif);
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            letter-spacing: 0.01em;
+        }
+
+        .tier-card-99 .tier-title {
+            color: var(--ink);
+        }
+
+        .tier-card-189 .tier-title {
+            color: #FFFFFF;
+        }
+
+        .tier-title-en {
+            font-family: var(--f-sans);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .tier-card-189 .tier-title-en {
+            color: #A39D93;
+        }
+
+        .tier-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .tier-card-189 .tier-price-row {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .tier-price-symbol {
+            font-family: var(--f-serif);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .tier-price-val {
+            font-family: var(--f-serif);
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .tier-card-99 .tier-price-val {
+            color: var(--ink);
+        }
+
+        .tier-card-189 .tier-price-val {
+            color: #FFFFFF;
+        }
+
+        .tier-price-tag {
+            font-size: 12px;
+            color: var(--muted);
+            margin-left: 8px;
+            background: #FAF8F4;
+            padding: 3px 8px;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+        }
+
+        .tier-card-189 .tier-price-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(197, 160, 89, 0.3);
+            color: #D6D0C4;
+        }
+
+        .tier-quote {
+            font-family: var(--f-serif);
+            font-style: italic;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+
+        .tier-card-189 .tier-quote {
+            color: #E8E2D7;
+        }
+
+        .tier-quote-en {
+            display: block;
+            font-style: normal;
+            font-family: var(--f-sans);
+            font-size: 11.5px;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .tier-card-189 .tier-quote-en {
+            color: #9C9588;
+        }
+
+        /* 个人命盘解析精炼介绍卡片样式 */
+        .tier-intro-box {
+            margin-top: 4px;
+            margin-bottom: 22px;
+        }
+
+        .tier-intro-lead {
+            font-family: var(--f-serif);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.03em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tier-intro-lead .lead-star {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .tier-intro-tags {
+            font-size: 13.5px;
+            color: #4A463F;
+            line-height: 1.85;
+            letter-spacing: 0.04em;
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 16px 20px;
+            word-break: break-word;
+        }
+
+        .tier-desc {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+        .tier-card-189 .tier-desc {
+            color: #C2BBB0;
+        }
+
+        .tier-features-box {
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+        }
+
+        .tier-features-gold {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(197, 160, 89, 0.25);
+        }
+
+        .tier-deep-services {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tier-deep-item {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 2px;
+            padding: 14px 16px;
+        }
+
+        .tier-deep-head {
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #E8C988;
+            margin-bottom: 6px;
+        }
+
+        .tier-deep-desc {
+            font-size: 12.5px;
+            line-height: 1.7;
+            color: #C8C2B6;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .tier-features-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .tier-card-189 .tier-features-label {
+            color: #D8B570;
+        }
+
+        .tier-features-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 16px;
+        }
+
+        @media (max-width: 640px) {
+            .tier-features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tier-features-list li {
+            font-size: 13px;
+            color: #4A4A4A;
+            line-height: 1.5;
+        }
+
+        .tier-card-189 .tier-features-list li {
+            color: #D6D0C4;
+        }
+
+        .tier-features-grid {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 16px;
+        }
+
+        @media (max-width: 640px) {
+            .tier-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tier-features-grid li {
+            font-size: 13px;
+            color: #E0DBD0;
+            line-height: 1.5;
+        }
+
+        .btn-tier {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            border: none;
+            font-family: inherit;
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .btn-tier-99 {
+            background: var(--ink);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-tier-99:hover {
+            background: #333333;
+            transform: translateY(-1px);
+        }
+
+        .btn-tier-189 {
+            background: var(--accent);
+            color: #1A1A1A;
+            box-shadow: 0 4px 18px rgba(197, 160, 89, 0.25);
+        }
+
+        .btn-tier-189:hover {
+            background: #D8B570;
+            transform: translateY(-1px);
+        }
+
+        .btn-tier-title {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .btn-tier-sub {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        .tier-note-text {
+            font-size: 11.5px;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .tier-card-189 .tier-note-text {
+            color: #9C9588;
+        }
+
+        /* 报告预览遮罩容器 */
+        .report-preview-wrap {
+            margin-top: 24px;
+            padding: 20px;
+            background: #FAF8F4;
+            border: 1px dashed var(--line);
+            border-radius: 2px;
+        }
+
+        .report-preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .report-preview-title {
+            font-family: var(--f-serif);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .report-preview-tag {
+            font-size: 10.5px;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* 弹窗专用微调 */
+        .modal-card-gold {
+            border-color: rgba(197, 160, 89, 0.6);
+        }
+
+        .modal-badge-gold {
+            color: #9C7D38;
+        }
+
+        .modal-qr-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: #FAF8F4;
+            color: var(--muted);
+        }
+
+        .modal-qr-placeholder-icon {
+            font-size: 26px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .modal-qr-placeholder-title {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .modal-qr-placeholder-hint {
+            font-size: 11px;
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        .modal-qr-placeholder-hint code {
+            background: #EDEAE1;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-size: 10px;
+            color: var(--ink);
+        }
+
+        .modal-steps-box {
+            margin-top: 10px;
+            text-align: left;
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 10px 14px;
+            font-size: 11.5px;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .copy-success-tip {
+            color: var(--accent);
+            font-size: 11px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* 付款完成确认按钮 (I HAVE PAID) */
+        .btn-paid-confirm {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 13px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+            background: #1A1A1A;
+            color: #FFFFFF;
+            border: 1px solid var(--accent);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            transition: all 0.25s ease;
+            text-align: center;
+            user-select: none;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-paid-confirm:hover {
+            background: #2D271F;
+            border-color: #E8C988;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.25);
+        }
+
+        .btn-paid-confirm-title {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #FAF6EF;
+        }
+
+        .btn-paid-confirm-sub {
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+
+        /* 专属分析报告大卡片 (Editorial / Luxury Report 视觉风格) */
+        .personal-reading-section {
+            margin-top: 40px;
+            margin-bottom: 50px;
+            animation: fadeInReadingReport 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInReadingReport {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reading-report-card {
+            background: #FDFCF9;
+            border: 1px solid var(--line);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.04);
+            padding: 48px 42px;
+            position: relative;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .reading-report-card {
+                padding: 28px 18px;
+            }
+        }
+
+        .reading-header {
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 30px;
+            margin-bottom: 34px;
+        }
+
+        .reading-header-badge {
+            display: inline-block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: var(--accent);
+            background: rgba(197, 160, 89, 0.08);
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(197, 160, 89, 0.25);
+        }
+
+        .reading-title-en {
+            font-family: var(--f-serif);
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--ink);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .reading-title-zh {
+            font-family: var(--f-serif);
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .reading-lead-quote {
+            font-size: 13.5px;
+            color: var(--muted);
+            max-width: 660px;
+            margin: 0 auto 24px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* 档案摘要元数据条 */
+        .reading-meta-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 16px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .reading-meta-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+
+        .reading-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.03em;
+        }
+
+        .meta-val {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--ink);
+            font-family: var(--f-sans);
+        }
+
+        /* 分组小标题 */
+        .reading-group-lead {
+            margin-top: 36px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            border-bottom: 1px solid var(--line-subtle);
+            padding-bottom: 8px;
+        }
+
+        .reading-group-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .reading-group-title {
+            font-family: var(--f-serif);
+            font-size: 16.5px;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+
+        /* 响应式网格 */
+        .reading-duo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .reading-duo-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* 维度卡片 */
+        .reading-dim-card {
+            background: #FAF8F4;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 24px 26px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s;
+        }
+
+        .reading-dim-card:hover {
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .reading-dim-primary {
+            border-left: 3px solid var(--ink);
+        }
+
+        .reading-dim-gold {
+            border-color: rgba(197, 160, 89, 0.4);
+            background: #FCFAF6;
+            border-left: 3px solid var(--accent);
+        }
+
+        .reading-dim-shadow {
+            background: #F8F6F2;
+            border-left: 3px solid #8C8275;
+        }
+
+        .dim-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .dim-num {
+            font-family: var(--f-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .dim-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dim-name {
+            font-family: var(--f-serif);
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+
+        .dim-name-en {
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .dim-tag-badge {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink);
+            background: #EDEAE1;
+            padding: 3px 10px;
+            border-radius: 2px;
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+        }
+
+        .dim-tag-gold {
+            background: rgba(197, 160, 89, 0.15);
+            color: #8C6A28;
+        }
+
+        .dim-tag-shadow {
+            background: #E4E0D7;
+            color: #4A463F;
+        }
+
+        .dim-prose {
+            font-size: 13.5px;
+            line-height: 1.85;
+            color: #33312E;
+            margin-bottom: 14px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .dim-deep-point {
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--muted);
+            border-top: 1px dashed var(--line);
+            padding-top: 12px;
+            margin-top: auto;
+        }
+
+        .dim-point-gold {
+            color: #7A5F28;
+        }
+
+        /* 09 人生使命独幅呈现 */
+        .reading-dim-mission {
+            background: linear-gradient(135deg, #FAF8F3 0%, #F5EFE4 100%);
+            border: 1px solid rgba(197, 160, 89, 0.45);
+            border-radius: 2px;
+            padding: 36px 36px;
+            margin-top: 8px;
+            position: relative;
+            box-shadow: inset 0 0 40px rgba(197, 160, 89, 0.04);
+        }
+
+        @media (max-width: 768px) {
+            .reading-dim-mission {
+                padding: 24px 20px;
+            }
+        }
+
+        .mission-tag {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .mission-title {
+            font-family: var(--f-serif);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        .mission-quote {
+            font-family: var(--f-serif);
+            font-size: 17.5px;
+            font-style: italic;
+            color: #4A3E26;
+            line-height: 1.65;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+        }
+
+        .mission-prose {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #2D2A26;
+            text-align: justify;
+            margin-bottom: 18px;
+        }
+
+        .mission-footer-tip {
+            font-size: 12.5px;
+            color: #6B5E45;
+            background: rgba(197, 160, 89, 0.1);
+            padding: 10px 16px;
+            border-radius: 2px;
+            line-height: 1.6;
+        }
+
+        /* 报告页脚动作条 */
+        .reading-report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--line);
+            padding-top: 28px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .report-stamp {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stamp-seal {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 14px;
+            font-family: var(--f-serif);
+        }
+
+        .stamp-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stamp-info strong {
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            color: var(--ink);
+        }
+
+        .stamp-info span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-report-action {
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--line);
+            background: #FAF8F4;
+            color: var(--ink);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-report-action:hover {
+            background: #FFFFFF;
+            border-color: var(--ink);
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #personalReadingReportSection,
+            #personalReadingReportSection * {
+                visibility: visible;
+            }
+            #personalReadingReportSection {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: block !important;
+            }
+            .report-actions, .modal-overlay, .site-footer {
+                display: none !important;
+            }
         }
 
         /* 页脚与免责声明 */
@@ -1484,352 +2599,614 @@
             </table>
         </div>
 
-        <!-- 8 大维度专属动态分析报告 (Professional Editorial Report) -->
-        <section class="report-section" id="dimensions">
-            <div class="report-intro-bar">
-                <span class="report-badge">Personal Insight Report</span>
-                <h2 class="report-main-heading">八维深度人格与能量图谱</h2>
-                <p class="report-sub">根据你的方阵数字频次与连线结构，生成全方位的个人洞察报告</p>
+        <!-- 免费部分：出生日期对应的数字分布 -->
+        <section class="free-dist-card" id="freeNumberDistributionCard">
+            <div class="free-section-title">
+                <span>✦</span>
+                <span>出生日期对应的数字分布速览</span>
             </div>
-
-            <div class="report-grid" id="dynamicReportGrid">
-                <!-- 01 核心人格 -->
-                <div class="report-card" id="rep-01">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 01</span>
-                            <span class="brand-sub">Core Personality</span>
-                        </div>
-                        <h3 class="report-card-title">核心人格 · 意志与本质</h3>
-                        <p class="report-card-text" id="rep-01-text">正在根据 1 号（自我意志）与 2 号（共情直觉）等核心数字计算中……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-01-hl">核心特质：分析中</div>
-                </div>
-
-                <!-- 02 能量模式 -->
-                <div class="report-card" id="rep-02">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 02</span>
-                            <span class="brand-sub">Energy Pattern</span>
-                        </div>
-                        <h3 class="report-card-title">能量模式 · 资源充盈度</h3>
-                        <p class="report-card-text" id="rep-02-text">分析整体数字分布密度与能量流动状态……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-02-hl">能量类型：分析中</div>
-                </div>
-
-                <!-- 03 思维与表达 -->
-                <div class="report-card" id="rep-03">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 03</span>
-                            <span class="brand-sub">Mind & Expression</span>
-                        </div>
-                        <h3 class="report-card-title">思维与表达 · 认知结构</h3>
-                        <p class="report-card-text" id="rep-03-text">综合 3 号（学习表达）、5 号（逻辑理性）、9 号（智慧复盘）的相互关系……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-03-hl">思维通道：分析中</div>
-                </div>
-
-                <!-- 04 行动与执行 -->
-                <div class="report-card" id="rep-04">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 04</span>
-                            <span class="brand-sub">Action & Execution</span>
-                        </div>
-                        <h3 class="report-card-title">行动与执行 · 落地闭环</h3>
-                        <p class="report-card-text" id="rep-04-text">考察 4 号（身体自律）、6 号（勤勉深耕）、8 号（大局担当）的落地能力……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-04-hl">执行效能：分析中</div>
-                </div>
-
-                <!-- 05 关系与情感 -->
-                <div class="report-card" id="rep-05">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 05</span>
-                            <span class="brand-sub">Relationships</span>
-                        </div>
-                        <h3 class="report-card-title">关系与情感 · 羁绊与共鸣</h3>
-                        <p class="report-card-text" id="rep-05-text">聚焦 2-5-8 温暖关系线与同理心通道，洞察你在亲密与家庭互动中的底层需求……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-05-hl">情感模式：分析中</div>
-                </div>
-
-                <!-- 06 优势天赋 -->
-                <div class="report-card" id="rep-06">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 06</span>
-                            <span class="brand-sub">Strengths</span>
-                        </div>
-                        <h3 class="report-card-title">天赋优势 · 高能支柱</h3>
-                        <p class="report-card-text" id="rep-06-text">提取当前命盘中出现频次最高、通道最畅通的核心支柱……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-06-hl">核心优势：分析中</div>
-                </div>
-
-                <!-- 07 需要留意的部分 -->
-                <div class="report-card" id="rep-07">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 07</span>
-                            <span class="brand-sub">Growth Areas</span>
-                        </div>
-                        <h3 class="report-card-title">成长修行 · 盲点与精进</h3>
-                        <p class="report-card-text" id="rep-07-text">梳理方阵中的空白数字或过度饱和点，提供温和、具象的自我进化方向……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-07-hl">觉察建议：分析中</div>
-                </div>
-
-                <!-- 08 总结 -->
-                <div class="report-card featured-card" id="rep-08">
-                    <div>
-                        <div class="report-card-top">
-                            <span class="report-step-tag">DIMENSION 08</span>
-                            <span class="brand-sub">Your Personal Summary</span>
-                        </div>
-                        <h3 class="report-card-title">总结 · 你的生命全景小结</h3>
-                        <p class="report-card-text" id="rep-08-text">整体能量格局与生命基调总结……</p>
-                    </div>
-                    <div class="report-card-highlight" id="rep-08-hl" style="font-size: 14.5px; line-height: 1.6;">
-                        “你最明显的特征是……”
-                    </div>
-                </div>
+            <p class="free-section-subtitle">
+                基于你的出生公历日期及衍生数推导出的 1–9 能量频次与缺数状态：
+            </p>
+            <div class="free-dist-grid" id="freeNumberDistributionGrid">
+                <!-- 由 JavaScript 动态填充 -->
             </div>
         </section>
 
-        <!-- 数字含义传奇索引卡 (保留原内容) -->
-        <section class="legend-card" id="legend-section">
-            <div class="legend-header">
-                <div class="legend-title">
+        <!-- 免费部分：方阵基础说明与解读指南 -->
+        <section class="free-guide-container" id="free-guide-section">
+            <!-- 基础说明 -->
+            <div class="free-info-box">
+                <div class="free-section-title">
                     <span>✦</span>
-                    <span>1–9 数字原力释义（自我解读指南）</span>
+                    <span>毕达哥拉斯方阵：基础说明与解读方法</span>
                 </div>
-                <span style="font-size: 12px; color: var(--text-tertiary);">毕达哥拉斯基底</span>
-            </div>
-            <div class="legend-grid">
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>01</span> 性格与意志</div>
-                    <div class="legend-desc">性格、主见、意志力、独立性与领导魄力</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>02</span> 能量与直觉</div>
-                    <div class="legend-desc">能量、情绪、直觉力、同理心与感受通道</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>03</span> 表达与学习</div>
-                    <div class="legend-desc">学习能力、表达力、沟通能力与艺术创造</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>04</span> 健康与稳固</div>
-                    <div class="legend-desc">健康、身体能量、稳定性、现实耐力</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>05</span> 逻辑与理性</div>
-                    <div class="legend-desc">逻辑、分析能力、理性思维与自省深度</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>06</span> 落实与勤勉</div>
-                    <div class="legend-desc">勤奋度、执行力、落实能力与细节落地</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>07</span> 运气与贵人</div>
-                    <div class="legend-desc">运气、贵人运、机会加成与精神灵感</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>08</span> 责任与担当</div>
-                    <div class="legend-desc">责任感、使命感、事业担当与商业把控</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-num-badge"><span>09</span> 智慧与记忆</div>
-                    <div class="legend-desc">智力、智慧、记忆力、总结归纳与哲学悟性</div>
+                <p class="free-section-subtitle" style="margin-bottom: 12px;">
+                    毕达哥拉斯方阵源于古希腊数秘学原理，通过出生日期的数字碰撞推导出一个 3×3 的九宫先天能量模型。
+                </p>
+                <div class="free-rules-grid">
+                    <div class="rule-card">
+                        <div class="rule-card-title">① 什么是方阵</div>
+                        <p class="rule-card-p">方阵将 1–9 九个核心原力分别锚定在九个宫位中，不代表宿命的好坏，而是映射出你天生携带的<strong>能量禀赋、认知通道与行为习惯</strong>。</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-card-title">② 基础解读方法</div>
+                        <p class="rule-card-p">横向观察三行（<strong>意志、情感、思维</strong>），纵向观察三列（<strong>身体、沟通、智慧</strong>），结合对角线与数字频次，即可看清能量的强弱流动。</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- 示例：刘亦菲 (完整保留原有案例数据与深度解析) -->
-        <section class="example-card" id="case-study">
-            <div class="example-header">
-                <div class="example-title">名人案例：刘亦菲（25.08.1987）</div>
-                <div class="example-sub">下面是按同一套规则生成的毕达哥拉斯方阵，仅作为示例说明：</div>
+            <!-- 1–9 数字原力释义 (自我解读指南) -->
+            <div class="legend-card" id="legend-section" style="margin-top: 0;">
+                <div class="legend-header">
+                    <div class="legend-title">
+                        <span>✦</span>
+                        <span>1–9 每个数字代表的基础含义</span>
+                    </div>
+                    <span style="font-size: 12px; color: var(--text-tertiary);">毕达哥拉斯基底</span>
+                </div>
+                <div class="legend-grid">
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>01</span> 性格与意志</div>
+                        <div class="legend-desc">性格、主见、意志力、独立性与领导魄力</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>02</span> 能量与直觉</div>
+                        <div class="legend-desc">能量、情绪、直觉力、同理心与感受通道</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>03</span> 表达与学习</div>
+                        <div class="legend-desc">学习能力、表达力、沟通能力与艺术创造</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>04</span> 健康与稳固</div>
+                        <div class="legend-desc">健康、身体能量、稳定性、现实耐力</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>05</span> 逻辑与理性</div>
+                        <div class="legend-desc">逻辑、分析能力、理性思维与自省深度</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>06</span> 落实与勤勉</div>
+                        <div class="legend-desc">勤奋度、执行力、落实能力与细节落地</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>07</span> 运气与贵人</div>
+                        <div class="legend-desc">运气、贵人运、机会加成与精神灵感</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>08</span> 责任与担当</div>
+                        <div class="legend-desc">责任感、使命感、事业担当与商业把控</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-num-badge"><span>09</span> 智慧与记忆</div>
+                        <div class="legend-desc">智力、智慧、记忆力、总结归纳与哲学悟性</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="example-matrix-box">
-                <table class="matrix example-matrix" style="max-width: 320px;">
-                    <tr>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">1 · 性格</span>
-                                <span class="cell-val">1</span>
-                            </div>
-                        </td>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">4 · 健康</span>
-                                <span class="cell-val">44</span>
-                            </div>
-                        </td>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">7 · 运气</span>
-                                <span class="cell-val">7</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">2 · 能量</span>
-                                <span class="cell-val">2</span>
-                            </div>
-                        </td>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">5 · 逻辑</span>
-                                <span class="cell-val">5</span>
-                            </div>
-                        </td>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">8 · 责任</span>
-                                <span class="cell-val">88</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">3 · 表达</span>
-                                <span class="cell-val">3</span>
-                            </div>
-                        </td>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">6 · 落实</span>
-                                <span class="cell-val">6</span>
-                            </div>
-                        </td>
-                        <td class="has-value">
-                            <div class="cell-content-wrap">
-                                <span class="cell-tag">9 · 智慧</span>
-                                <span class="cell-val">99</span>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <!-- 连线的基础含义 (8条主线) -->
+            <div class="free-info-box">
+                <div class="free-section-title">
+                    <span>✦</span>
+                    <span>方阵连线的基础含义（8条主能量通道）</span>
+                </div>
+                <p class="free-section-subtitle" style="margin-bottom: 12px;">
+                    当相应三个数字同时出现时，便在九宫格中形成贯通的能量闭环，代表显著的天赋特长：
+                </p>
+                <div class="free-lines-grid">
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">生命脊梁线</span>
+                            <span class="line-item-nums">1 - 4 - 7</span>
+                        </div>
+                        <div class="line-item-desc">内在定力强，坚韧不拔，抗挫抗压能力极强，是极稳固的内在支柱。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">家庭与亲密线</span>
+                            <span class="line-item-nums">2 - 5 - 8</span>
+                        </div>
+                        <div class="line-item-desc">情感充沛，高共情力，重视家庭纽带与亲密关系，是温暖的守护者。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">社会与智识线</span>
+                            <span class="line-item-nums">3 - 6 - 9</span>
+                        </div>
+                        <div class="line-item-desc">学习力、落实度与宏观记忆结合，善于将理论转化为现实社会成果。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">自尊与自我线</span>
+                            <span class="line-item-nums">1 - 2 - 3</span>
+                        </div>
+                        <div class="line-item-desc">自我评价高，有健康的自尊心与自律力，重视个人形象与自我认可。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">务实创富线</span>
+                            <span class="line-item-nums">4 - 5 - 6</span>
+                        </div>
+                        <div class="line-item-desc">耐力（4）+逻辑（5）+落实（6），极强的商业造血与稳健理财潜质。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">天赋力量线</span>
+                            <span class="line-item-nums">7 - 8 - 9</span>
+                        </div>
+                        <div class="line-item-desc">精神洞察深，自带贵人缘与社会担当，容易在专业领域建立持久影响力。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">灵性追求线</span>
+                            <span class="line-item-nums">1 - 5 - 9</span>
+                        </div>
+                        <div class="line-item-desc">对角线通道，超强直觉与灵性悟性，追求超越物质的精神意义与真理。</div>
+                    </div>
+                    <div class="line-item-card">
+                        <div class="line-item-head">
+                            <span class="line-item-name">现实敏锐线</span>
+                            <span class="line-item-nums">7 - 5 - 3</span>
+                        </div>
+                        <div class="line-item-desc">敏锐的金钱嗅觉与机会识别力，对外部现实趋势变化极具先见之明。</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="example-text">
-                <div style="font-weight: 600; font-size: 15px; margin-bottom: 12px; color: var(--text-primary);">
-                    简要解析（25.08.1987）：
+            <!-- 重复数字与缺数的基础含义 -->
+            <div class="free-info-box">
+                <div class="free-section-title">
+                    <span>✦</span>
+                    <span>重复数字与缺数的基础含义</span>
+                </div>
+                <div class="free-rules-grid">
+                    <div class="rule-card">
+                        <div class="rule-card-title">重复数字：能量的丰沛与聚焦</div>
+                        <p class="rule-card-p"><strong>出现 1 次</strong>：平衡健康，适度发挥；</p>
+                        <p class="rule-card-p"><strong>出现 2 次</strong>：能量充沛，成为你天然自发的核心优势支柱；</p>
+                        <p class="rule-card-p"><strong>出现 3 次及以上</strong>：高度聚焦，容易产生强烈的执念或过载，需学会有意识地调节与平衡。</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-card-title">缺数：此生的灵魂进阶修炼课</div>
+                        <p class="rule-card-p">未在方阵显现的数字并不是缺陷，更不代表欠缺能力。它代表你<strong>先天没有形成固化本能</strong>的维度。</p>
+                        <p class="rule-card-p">通过后天在生活和事业中有意识地刻意练习，缺数维度往往能成为你一生最具突破性的<strong>成长蜕变契机</strong>。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 名人案例示范：刘亦菲 (完整保留原有案例数据与解析) -->
+            <div class="example-card" id="case-study" style="margin-top: 0;">
+                <div class="example-header">
+                    <div class="example-title">名人案例参考：刘亦菲（25.08.1987）</div>
+                    <div class="example-sub">同一套规则生成的标准毕达哥拉斯方阵对照说明：</div>
                 </div>
 
-                <div class="example-extra-container">
-                    <table class="example-extra">
-                        <thead>
-                            <tr>
-                                <th>强度</th>
-                                <th>指标</th>
-                                <th>对应连线</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>5</strong></td>
-                                <td>天赋力量</td>
-                                <td>第 7, 8, 9 列</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4</strong></td>
-                                <td>赚钱能力</td>
-                                <td>第 4, 5, 6 列</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4</strong></td>
-                                <td>生命脊梁（内在支柱）</td>
-                                <td>第 1, 4, 7 行</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4</strong></td>
-                                <td>社会适应力 / 社会稳定性</td>
-                                <td>第 3, 6, 9 行</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4</strong></td>
-                                <td>家庭向 / 好家人特质</td>
-                                <td>第 2, 5, 8 行</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4</strong></td>
-                                <td>灵性与精神性</td>
-                                <td>对角线 1–5–9</td>
-                            </tr>
-                            <tr>
-                                <td><strong>3</strong></td>
-                                <td>自我评价 / 自尊水平</td>
-                                <td>第 1, 2, 3 列</td>
-                            </tr>
-                            <tr>
-                                <td><strong>3</strong></td>
-                                <td>金钱观与现实感</td>
-                                <td>对角线 7–5–3</td>
-                            </tr>
-                            <tr>
-                                <td><strong>31</strong></td>
-                                <td>总得分</td>
-                                <td>整体资源量（数字越高越好）</td>
-                            </tr>
-                        </tbody>
+                <div class="example-matrix-box">
+                    <table class="matrix example-matrix" style="max-width: 320px;">
+                        <tr>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">1 · 性格</span>
+                                    <span class="cell-val">1</span>
+                                </div>
+                            </td>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">4 · 健康</span>
+                                    <span class="cell-val">44</span>
+                                </div>
+                            </td>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">7 · 运气</span>
+                                    <span class="cell-val">7</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">2 · 能量</span>
+                                    <span class="cell-val">2</span>
+                                </div>
+                            </td>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">5 · 逻辑</span>
+                                    <span class="cell-val">5</span>
+                                </div>
+                            </td>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">8 · 责任</span>
+                                    <span class="cell-val">88</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">3 · 表达</span>
+                                    <span class="cell-val">3</span>
+                                </div>
+                            </td>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">6 · 落实</span>
+                                    <span class="cell-val">6</span>
+                                </div>
+                            </td>
+                            <td class="has-value">
+                                <div class="cell-content-wrap">
+                                    <span class="cell-tag">9 · 智慧</span>
+                                    <span class="cell-val">99</span>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
                 </div>
 
-                <div class="example-summary">
-                    <p style="margin-bottom: 10px;"><strong>整体小结：</strong></p>
-                    <p style="margin-bottom: 12px;">从方阵来看，这是一个非常均衡、能量充足的命格：九宫格 1–9 全部到齐，横向、纵向和对角线几乎都能连成线，说明她属于资源天花板很高的一类人。简单说，就是天赋强、可发挥的空间大，而且不只是某一块特别突出，而是各方面都比较在线。</p>
-                    <p style="margin-bottom: 8px;">这样的命格，通常对应：</p>
-                    <p style="margin-bottom: 6px;">• 出生条件不差，家境优渥、支持度高的环境；</p>
-                    <p style="margin-bottom: 6px;">• 本人自带才华与气质，容貌出众，适合被看见、被放在舞台中央；</p>
-                    <p style="margin-bottom: 6px;">• 有赚钱能力，也有精神追求，不是只看钱的人；</p>
-                    <p style="margin-bottom: 14px;">• 家庭观念、责任感、口碑都比较重要，会在意“活成一个值得尊敬的人”。</p>
-                    <p>有自己的气场和节奏。用毕达哥拉斯方阵的语言来说，就是：<strong>福报很足，又把这份福报用得比较好，是一个“既幸运又自律”的强生命体。</strong></p>
+                <div class="example-text">
+                    <div style="font-weight: 600; font-size: 14.5px; margin-bottom: 12px; color: var(--text-primary);">
+                        简要解析对照（25.08.1987）：
+                    </div>
+
+                    <div class="example-extra-container">
+                        <table class="example-extra">
+                            <thead>
+                                <tr>
+                                    <th>强度</th>
+                                    <th>指标</th>
+                                    <th>对应连线</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>5</strong></td>
+                                    <td>天赋力量</td>
+                                    <td>第 7, 8, 9 列</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4</strong></td>
+                                    <td>赚钱能力</td>
+                                    <td>第 4, 5, 6 列</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4</strong></td>
+                                    <td>生命脊梁（内在支柱）</td>
+                                    <td>第 1, 4, 7 行</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4</strong></td>
+                                    <td>社会适应力 / 社会稳定性</td>
+                                    <td>第 3, 6, 9 行</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4</strong></td>
+                                    <td>家庭向 / 好家人特质</td>
+                                    <td>第 2, 5, 8 行</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4</strong></td>
+                                    <td>灵性与精神性</td>
+                                    <td>对角线 1–5–9</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3</strong></td>
+                                    <td>自我评价 / 自尊水平</td>
+                                    <td>第 1, 2, 3 列</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3</strong></td>
+                                    <td>金钱观与现实感</td>
+                                    <td>对角线 7–5–3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>31</strong></td>
+                                    <td>总得分</td>
+                                    <td>整体资源量（数字越高越好）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example-summary">
+                        <p style="margin-bottom: 10px;"><strong>整体小结：</strong></p>
+                        <p style="margin-bottom: 12px;">从方阵来看，这是一个非常均衡、能量充足的命格：九宫格 1–9 全部到齐，横向、纵向和对角线几乎都能连成线，说明她属于资源天花板很高的一类人。天赋强、可发挥的空间大，而且各维度资源底盘比较在线。</p>
+                        <p>有自己的气场和节奏。用毕达哥拉斯方阵的语言来说，就是：<strong>福报很足，又把这份福报用得比较好，是一个“既幸运又自律”的强生命体。</strong></p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 付费解析 CTA (保留原ID、列表、支付宝跳转链接、微信号与高亮动画) -->
-        <section class="cta" id="cta">
-            <div class="cta-intro">你的专属命盘，一对一解读，最值得被看清的是：</div>
+        <!-- 付费产品层级划分 (个人命盘解析 -> 1V1 深度看盘) -->
+        <section class="tier-product-section" id="pricing-tiers">
+            <!-- 第一块：个人命盘解析 -->
+            <div class="tier-card tier-card-99" id="tier-summary-99">
+                <div class="tier-intro-box" style="margin-top: 0;">
+                    <h3 class="tier-intro-lead"><span class="lead-star">✦</span> 解锁你的专属分析报告</h3>
+                    <div class="tier-intro-tags">
+                        主体性格 · 隐藏特质 · 优势天赋 · 财富路径 · 能量模式 · 情感表达 · 内在课题 · 成长方向 · 人生使命
+                    </div>
+                </div>
 
-            <ul class="cta-list">
-                <li>清晰地了解自己的 <strong>天赋使命</strong></li>
-                <li>真正适合你的 <strong>财富路径</strong></li>
-                <li>看清你的 <strong>亲密关系结构</strong></li>
-                <li>梳理这一生真正需要完成的 <strong>人生课题</strong></li>
-            </ul>
+                <!-- 高级、明显的黑色按钮 -->
+                <div style="margin-top: 22px;">
+                    <button type="button" class="btn-tier btn-tier-99" onclick="openModal19()" id="btn-unlock-personal">
+                        <span class="btn-tier-title">¥19.90 解锁专属分析报告</span>
+                        <span class="btn-tier-sub">UNLOCK MY PERSONAL READING</span>
+                    </button>
+                </div>
 
-            <div class="cta-action-area">
-                <!-- 支付宝付款按钮 (点击弹出付款二维码窗口) -->
-                <button type="button" class="cta-btn" id="openPaymentModalBtn" onclick="openPaymentModal()">
-                    <span>支付宝支付 ¥36.80</span>
-                </button>
+                <!-- 内部保留报告DOM锚点，确保运算逻辑平稳执行 -->
+                <div id="dimensions" style="display: none;" aria-hidden="true">
+                    <div id="dynamicReportGrid">
+                        <div id="rep-01"><span id="rep-01-text"></span><span id="rep-01-hl"></span></div>
+                        <div id="rep-02"><span id="rep-02-text"></span><span id="rep-02-hl"></span></div>
+                        <div id="rep-03"><span id="rep-03-text"></span><span id="rep-03-hl"></span></div>
+                        <div id="rep-04"><span id="rep-04-text"></span><span id="rep-04-hl"></span></div>
+                        <div id="rep-05"><span id="rep-05-text"></span><span id="rep-05-hl"></span></div>
+                        <div id="rep-06"><span id="rep-06-text"></span><span id="rep-06-hl"></span></div>
+                        <div id="rep-07"><span id="rep-07-text"></span><span id="rep-07-hl"></span></div>
+                        <div id="rep-08"><span id="rep-08-text"></span><span id="rep-08-hl"></span></div>
+                    </div>
+                </div>
+            </div>
 
-                <!-- 付款说明 -->
-                <div class="cta-note">
-                    <div style="margin-bottom: 4px;">付款请备注：<strong>毕达哥拉斯</strong></div>
-                    <div>
-                        付款成功后，请添加微信：<strong>yifeicosmos</strong>
-                        <button type="button" class="wechat-copy-badge" onclick="copyWechat()">
-                            <span>📋 一键复制微信号</span>
-                        </button>
-                        <div id="copySuccess" style="display:none; color: #81D8D0; font-size: 11px; margin-top: 4px;">已复制到剪贴板！</div>
-                        <div style="margin-top: 6px;">
-                            发送付款截图 + 出生日期（阳历），我会在约定时间内进行一对一解析。
+            <!-- 第二块：1V1 深度看盘 -->
+            <div class="tier-card tier-card-189" id="tier-consultation-189">
+                <div class="tier-badge tier-badge-gold">1V1 DEEP MATRIX READING</div>
+                <h2 class="tier-title">1V1 深度看盘</h2>
+                <div class="tier-title-en">1V1 DEEP MATRIX READING</div>
+
+                <div class="tier-quote">
+                    “数字不仅反映个人特质，也能呈现人与人之间的互动模式。通过深度看盘与一对一对话，深入看见结构、理清关系、梳理情绪，在清晰的觉察中找回自我与方向。”
+                    <span class="tier-quote-en">Numbers reveal more than individual traits. A deeper reading brings clarity to personal structure, relationships, and emotional well-being.</span>
+                </div>
+
+                <div class="tier-features-box tier-features-gold">
+                    <div class="tier-features-label">服务内容涵盖：</div>
+                    <div class="tier-deep-services">
+                        <div class="tier-deep-item">
+                            <div class="tier-deep-head">01｜个人深度看盘</div>
+                            <div class="tier-deep-desc">针对个人命盘进行更深入的一对一解读，从整体数字结构出发，深入梳理性格、天赋、情感、财富、人生课题与发展方向。</div>
+                        </div>
+                        <div class="tier-deep-item">
+                            <div class="tier-deep-head">02｜两人合盘</div>
+                            <div class="tier-deep-desc">适用于伴侣、暧昧对象、家人或重要合作关系。通过两个人的命盘，看见彼此在关系中的吸引、情感需求、相处模式、能量互补以及关系课题。</div>
+                        </div>
+                        <div class="tier-deep-item">
+                            <div class="tier-deep-head">03｜心理疗愈 · 45分钟</div>
+                            <div class="tier-deep-desc">一对一深度沟通与情绪梳理。围绕当下正在经历的情感、关系、自我成长或人生困惑，帮助看见情绪背后的真实需求与内在课题。</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- 动作按钮 (紧接服务内容正下方，不显示价格) -->
+                <div style="margin-top: 20px;">
+                    <button type="button" class="btn-tier btn-tier-189" onclick="openModal189()" id="btn-book-189">
+                        <span class="btn-tier-title">预约 1V1 深度看盘</span>
+                        <span class="btn-tier-sub">BOOK A 1V1 DEEP READING</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 付费专属：你的专属命盘解析报告 (UNLOCK MY PERSONAL READING) -->
+        <section class="personal-reading-section" id="personalReadingReportSection" style="display: none;">
+            <div class="reading-report-card" id="readingReportCard">
+                <!-- 报告专属顶部 Header -->
+                <header class="reading-header">
+                    <div class="reading-header-badge">✦ CONFIDENTIAL PERSONAL INSIGHT · 命盘专属解读</div>
+                    <h2 class="reading-title-en">YOUR PERSONAL READING</h2>
+                    <h3 class="reading-title-zh">你的专属命盘解析</h3>
+                    <p class="reading-lead-quote">
+                        “从出生日期的原初数字结构，照亮生命底层的行为模式、心理原型与发展通道。”
+                    </p>
+                    
+                    <!-- 命主档案摘要条 -->
+                    <div class="reading-meta-bar" id="reportMetaBar">
+                        <div class="reading-meta-item">
+                            <span class="meta-label">测算出生日期</span>
+                            <strong class="meta-val" id="repMetaDate">--.--.----</strong>
+                        </div>
+                        <div class="reading-meta-item">
+                            <span class="meta-label">生命核心根数</span>
+                            <strong class="meta-val" id="repMetaRoot">--</strong>
+                        </div>
+                        <div class="reading-meta-item">
+                            <span class="meta-label">方阵衍生数 (A/B/C/D)</span>
+                            <strong class="meta-val" id="repMetaDeriv">-- / -- / -- / --</strong>
+                        </div>
+                        <div class="reading-meta-item">
+                            <span class="meta-label">九宫格点亮态</span>
+                            <strong class="meta-val" id="repMetaGrid">-- / 9 宫</strong>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- 报告九大维度展示区 (Editorial 节奏) -->
+                <div class="reading-content-body">
+                    <!-- 模块一：核心人格与潜意识 (01 主体性格 & 02 隐藏特质) -->
+                    <div class="reading-group-lead">
+                        <span class="reading-group-tag">DIMENSION 01 & 02</span>
+                        <h4 class="reading-group-title">人格图谱与潜意识原型</h4>
+                    </div>
+                    
+                    <div class="reading-duo-grid">
+                        <!-- 01 主体性格 -->
+                        <article class="reading-dim-card reading-dim-primary" id="card-dim-01">
+                            <div class="dim-head">
+                                <span class="dim-num">01</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">主体性格</h5>
+                                    <span class="dim-name-en">PRIMARY PERSONALITY STRUCTURE</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge" id="dim-01-badge">--</div>
+                            <div class="dim-prose" id="dim-01-body">--</div>
+                            <div class="dim-deep-point" id="dim-01-point">--</div>
+                        </article>
+
+                        <!-- 02 隐藏特质 -->
+                        <article class="reading-dim-card" id="card-dim-02">
+                            <div class="dim-head">
+                                <span class="dim-num">02</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">隐藏特质</h5>
+                                    <span class="dim-name-en">UNCONSCIOUS DRIVE & SHADOW DYNAMICS</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge" id="dim-02-badge">--</div>
+                            <div class="dim-prose" id="dim-02-body">--</div>
+                            <div class="dim-deep-point" id="dim-02-point">--</div>
+                        </article>
+                    </div>
+
+                    <!-- 模块二：认知、天赋与财富路径 (03 优势天赋 & 04 财富路径) -->
+                    <div class="reading-group-lead">
+                        <span class="reading-group-tag">DIMENSION 03 & 04</span>
+                        <h4 class="reading-group-title">天赋优势与财富实现路径</h4>
+                    </div>
+
+                    <div class="reading-duo-grid">
+                        <!-- 03 优势天赋 -->
+                        <article class="reading-dim-card" id="card-dim-03">
+                            <div class="dim-head">
+                                <span class="dim-num">03</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">优势天赋</h5>
+                                    <span class="dim-name-en">INNATE TALENTS & COGNITIVE STRENGTH</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge" id="dim-03-badge">--</div>
+                            <div class="dim-prose" id="dim-03-body">--</div>
+                            <div class="dim-deep-point" id="dim-03-point">--</div>
+                        </article>
+
+                        <!-- 04 财富路径 -->
+                        <article class="reading-dim-card reading-dim-gold" id="card-dim-04">
+                            <div class="dim-head">
+                                <span class="dim-num">04</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">财富路径</h5>
+                                    <span class="dim-name-en">WEALTH FLOW & MATERIAL MANIFESTATION</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge dim-tag-gold" id="dim-04-badge">--</div>
+                            <div class="dim-prose" id="dim-04-body">--</div>
+                            <div class="dim-deep-point dim-point-gold" id="dim-04-point">--</div>
+                        </article>
+                    </div>
+
+                    <!-- 模块三：身心力场与关系模式 (05 能量模式 & 06 情感表达) -->
+                    <div class="reading-group-lead">
+                        <span class="reading-group-tag">DIMENSION 05 & 06</span>
+                        <h4 class="reading-group-title">生理心性能量与亲密交互</h4>
+                    </div>
+
+                    <div class="reading-duo-grid">
+                        <!-- 05 能量模式 -->
+                        <article class="reading-dim-card" id="card-dim-05">
+                            <div class="dim-head">
+                                <span class="dim-num">05</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">能量模式</h5>
+                                    <span class="dim-name-en">VITAL ENERGY & CADENCE BLUEPRINT</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge" id="dim-05-badge">--</div>
+                            <div class="dim-prose" id="dim-05-body">--</div>
+                            <div class="dim-deep-point" id="dim-05-point">--</div>
+                        </article>
+
+                        <!-- 06 情感表达 -->
+                        <article class="reading-dim-card" id="card-dim-06">
+                            <div class="dim-head">
+                                <span class="dim-num">06</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">情感表达</h5>
+                                    <span class="dim-name-en">EMOTIONAL EXPRESSION & ATTACHMENT STYLE</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge" id="dim-06-badge">--</div>
+                            <div class="dim-prose" id="dim-06-body">--</div>
+                            <div class="dim-deep-point" id="dim-06-point">--</div>
+                        </article>
+                    </div>
+
+                    <!-- 模块四：自我演化与破局关键 (07 内在课题 & 08 成长方向) -->
+                    <div class="reading-group-lead">
+                        <span class="reading-group-tag">DIMENSION 07 & 08</span>
+                        <h4 class="reading-group-title">演进课题与突破路径</h4>
+                    </div>
+
+                    <div class="reading-duo-grid">
+                        <!-- 07 内在课题 -->
+                        <article class="reading-dim-card reading-dim-shadow" id="card-dim-07">
+                            <div class="dim-head">
+                                <span class="dim-num">07</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">内在课题</h5>
+                                    <span class="dim-name-en">CORE LIFE LESSONS & RESISTANCE POINTS</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge dim-tag-shadow" id="dim-07-badge">--</div>
+                            <div class="dim-prose" id="dim-07-body">--</div>
+                            <div class="dim-deep-point" id="dim-07-point">--</div>
+                        </article>
+
+                        <!-- 08 成长方向 -->
+                        <article class="reading-dim-card" id="card-dim-08">
+                            <div class="dim-head">
+                                <span class="dim-num">08</span>
+                                <div class="dim-titles">
+                                    <h5 class="dim-name">成长方向</h5>
+                                    <span class="dim-name-en">INTEGRATION STRATEGY & ROADMAP</span>
+                                </div>
+                            </div>
+                            <div class="dim-tag-badge" id="dim-08-badge">--</div>
+                            <div class="dim-prose" id="dim-08-body">--</div>
+                            <div class="dim-deep-point" id="dim-08-point">--</div>
+                        </article>
+                    </div>
+
+                    <!-- 模块五：终极图景 (09 人生使命) - 独幅大格局 Editorial 呈现 -->
+                    <div class="reading-group-lead">
+                        <span class="reading-group-tag">DIMENSION 09</span>
+                        <h4 class="reading-group-title">终极图景与生命愿景</h4>
+                    </div>
+
+                    <article class="reading-dim-mission" id="card-dim-09">
+                        <div class="mission-tag">09 · SOUL PURPOSE & VOCATION</div>
+                        <h5 class="mission-title">人生使命</h5>
+                        <div class="mission-quote" id="dim-09-quote">
+                            “——”
+                        </div>
+                        <div class="mission-prose" id="dim-09-body">--</div>
+                        <div class="mission-footer-tip" id="dim-09-tip">--</div>
+                    </article>
+                </div>
+
+                <!-- 报告页脚动作条 -->
+                <footer class="reading-report-footer">
+                    <div class="report-stamp">
+                        <div class="stamp-seal">✦</div>
+                        <div class="stamp-info">
+                            <strong>PYTHAGOREAN ARCHETYPE VERIFIED</strong>
+                            <span>专属命盘分析报告已就绪 · 建议截图或打印保存</span>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button type="button" class="btn-report-action" onclick="window.print()">
+                            🖨️ 保存 / 打印分析报告
+                        </button>
+                        <button type="button" class="btn-report-action" onclick="smoothScrollToTop()">
+                            ↑ 回到方阵
+                        </button>
+                    </div>
+                </footer>
             </div>
         </section>
     </div>
@@ -1837,7 +3214,7 @@
     <!-- 免责声明与页脚 -->
     <footer class="site-footer">
         <p class="disclaimer-text">
-            免责声明：本工具用于自我探索与个人洞察，仅供个人探索和娱乐，不构成任何专业建议或心理诊断。
+            免责声明：本工具用于自我探索与个人洞察，仅供个人探索和学习，不构成任何专业建议或心理诊断。
             <br />
             This tool is designed for self-reflection and personal insight.
         </p>
@@ -1845,53 +3222,100 @@
     </footer>
 </main>
 
-<!-- 支付宝付款弹窗 (Editorial Minimalist Modal) -->
-<div class="modal-overlay" id="paymentModal" onclick="handleModalBackdropClick(event)">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <!-- 关闭按钮（右上角） -->
-        <button type="button" class="modal-close-btn" onclick="closePaymentModal()" aria-label="关闭二维码窗口">
-            ✕
-        </button>
-
-        <div class="modal-badge">ALIPAY PAYMENT</div>
-        <h3 class="modal-title" id="modalTitle">一对一命盘解读</h3>
+<!-- 弹窗一：¥19.90 个人命盘解析专属弹窗 -->
+<div class="modal-overlay" id="modal-tier-19" onclick="handleModalBackdropClick(event)">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle19">
+        <button type="button" class="modal-close-btn" onclick="closeModal19()" aria-label="关闭窗口">✕</button>
+        <div class="modal-badge">PERSONAL MATRIX READING</div>
+        <h3 class="modal-title" id="modalTitle19">个人命盘解析</h3>
         
         <div class="modal-price">
-            <span class="modal-price-symbol">¥</span>36.80
+            <span class="modal-price-symbol">¥</span>19.90
         </div>
 
-        <!-- 支付宝收款二维码图片 -->
-        <div class="modal-qr-container" id="modalQrContainer">
+        <div class="modal-qr-container">
             <img 
-                id="alipayQrImg" 
-                src="36.8.jpg" 
-                alt="支付宝收款二维码" 
+                id="qr-img-19" 
+                src="./assets/alipay-qr.jpg" 
+                alt="个人命盘解析 支付宝收款二维码" 
                 class="modal-qr-image" 
-                onerror="handleQrImgError(this)" 
-                onload="handleQrImgLoad(this)" 
+                onerror="handleQrError(this, 'placeholder-19')" 
+                onload="handleQrSuccess(this, 'placeholder-19')" 
             />
-            <div class="modal-qr-placeholder" id="qrPlaceholder" onclick="document.getElementById('qrFileInput').click()" style="cursor: pointer;" title="点击上传或更换收款码">
+            <div class="modal-qr-placeholder" id="placeholder-19" style="display: none;">
                 <div class="modal-qr-placeholder-icon">⚏</div>
-                <div class="modal-qr-placeholder-text">
-                    <strong>收款二维码</strong><br />
-                    <span style="color: var(--accent); text-decoration: underline;">点击此处直接选择 36.8.jpg 上传</span>
+                <div class="modal-qr-placeholder-title">二维码加载中</div>
+                <div class="modal-qr-placeholder-hint">
+                    如未能正常显示，可直接添加微信 <strong>yifeicosmos</strong> 咨询
                 </div>
             </div>
-            <input type="file" id="qrFileInput" accept="image/*" style="display: none;" onchange="handleQrFileUpload(event)" />
         </div>
 
-        <!-- 提示文字（严格遵循指令第 5 条） -->
         <div class="modal-prompt-text">请使用支付宝扫描二维码完成支付</div>
 
         <div class="modal-sub-tip">
-            支付成功后添加微信：<strong style="color: var(--accent);">yifeicosmos</strong><br />
-            发送付款截图 + 出生日期即可预约一对一解析
+            支付成功后添加微信：<strong style="color: var(--accent);">yifeicosmos</strong>
+            <button type="button" class="wechat-copy-badge" onclick="copyWechat('copySuccess19')">📋 复制微信号</button>
+            <div id="copySuccess19" class="copy-success-tip" style="display: none;">已复制到剪贴板！</div>
+            <div style="margin-top: 8px;">发送付款截图 + 出生日期，即可获取属于你的《个人命盘解析》报告。</div>
         </div>
 
-        <!-- 关闭按钮（底部） -->
-        <button type="button" class="modal-footer-btn" onclick="closePaymentModal()">
-            关闭窗口
-        </button>
+        <!-- 我已完成支付 按钮 -->
+        <div style="margin-top: 14px; margin-bottom: 8px;">
+            <button type="button" class="btn-paid-confirm" onclick="confirmPaymentAndShowReport()" id="btn-paid-confirm-19">
+                <span class="btn-paid-confirm-title">我已完成支付</span>
+                <span class="btn-paid-confirm-sub">I HAVE PAID</span>
+            </button>
+        </div>
+
+        <button type="button" class="modal-footer-btn" onclick="closeModal19()">稍后支付 / 关闭窗口</button>
+    </div>
+</div>
+
+<!-- 弹窗二：¥189 1V1 深度看盘专属弹窗 -->
+<div class="modal-overlay" id="modal-tier-189" onclick="handleModalBackdropClick(event)">
+    <div class="modal-card modal-card-gold" role="dialog" aria-modal="true" aria-labelledby="modalTitle189">
+        <button type="button" class="modal-close-btn" onclick="closeModal189()" aria-label="关闭窗口">✕</button>
+        <div class="modal-badge modal-badge-gold">1V1 DEEP MATRIX READING</div>
+        <h3 class="modal-title" id="modalTitle189">1V1 深度看盘</h3>
+        
+        <div class="modal-price">
+            <span class="modal-price-symbol">¥</span>189
+        </div>
+
+        <div class="modal-qr-container">
+            <img 
+                id="qr-img-189" 
+                src="./assets/alipay-qr.jpg" 
+                alt="1V1 深度看盘 支付宝收款二维码" 
+                class="modal-qr-image" 
+                onerror="handleQrError(this, 'placeholder-189')" 
+                onload="handleQrSuccess(this, 'placeholder-189')" 
+            />
+            <div class="modal-qr-placeholder" id="placeholder-189" style="display: none;">
+                <div class="modal-qr-placeholder-icon">⚏</div>
+                <div class="modal-qr-placeholder-title">二维码加载中</div>
+                <div class="modal-qr-placeholder-hint">
+                    如未能正常显示，可直接添加微信 <strong>yifeicosmos</strong> 咨询
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-prompt-text">请使用支付宝扫描二维码完成支付</div>
+
+        <div class="modal-sub-tip">
+            支付成功后添加微信：<strong style="color: var(--accent);">yifeicosmos</strong>
+            <button type="button" class="wechat-copy-badge" onclick="copyWechat('copySuccess189')">📋 复制微信号</button>
+            <div id="copySuccess189" class="copy-success-tip" style="display: none;">已复制到剪贴板！</div>
+            <div class="modal-steps-box">
+                <div style="font-weight: 600; margin-bottom: 4px; color: var(--ink);">并发送以下信息预约看盘：</div>
+                <div>1. 支付截图</div>
+                <div>2. 出生日期（阳历）</div>
+                <div>3. 希望重点了解的问题</div>
+            </div>
+        </div>
+
+        <button type="button" class="modal-footer-btn" onclick="closeModal189()">关闭窗口</button>
     </div>
 </div>
 
@@ -1927,105 +3351,134 @@ function fillToday() {
     calcMatrix();
 }
 
-function copyWechat() {
+function copyWechat(targetId) {
     var wechat = 'yifeicosmos';
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(wechat).then(function() {
-            var msg = document.getElementById('copySuccess');
-            if (msg) {
-                msg.style.display = 'block';
-                setTimeout(function() { msg.style.display = 'none'; }, 2500);
-            }
-        });
-    } else {
-        var tempInput = document.createElement('input');
-        tempInput.value = wechat;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-        var msg = document.getElementById('copySuccess');
+    var targetElId = targetId || 'copySuccess';
+    var showSuccessMsg = function() {
+        var msg = document.getElementById(targetElId);
         if (msg) {
             msg.style.display = 'block';
             setTimeout(function() { msg.style.display = 'none'; }, 2500);
         }
-    }
-}
-
-// 支付宝付款弹窗控制与收款码初始化
-function initQrCode() {
-    try {
-        var savedQr = localStorage.getItem('alipay_qr_data');
-        var img = document.getElementById('alipayQrImg');
-        if (img && savedQr) {
-            img.src = savedQr;
-        }
-    } catch (e) {}
-}
-
-function handleQrImgLoad(img) {
-    img.style.display = 'block';
-    var ph = document.getElementById('qrPlaceholder');
-    if (ph) ph.style.display = 'none';
-}
-
-function handleQrImgError(img) {
-    // 若主图片无法读取，则尝试回退到 alipay-qr.jpg
-    if (img.src.indexOf('alipay-qr.jpg') === -1) {
-        img.src = 'alipay-qr.jpg';
-        return;
-    }
-
-    img.style.display = 'none';
-    var ph = document.getElementById('qrPlaceholder');
-    if (ph) ph.style.display = 'flex';
-}
-
-function handleQrFileUpload(e) {
-    var file = e.target.files && e.target.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(evt) {
-        var dataUrl = evt.target.result;
-        var img = document.getElementById('alipayQrImg');
-        if (img) {
-            img.src = dataUrl;
-            img.style.display = 'block';
-        }
-        var ph = document.getElementById('qrPlaceholder');
-        if (ph) ph.style.display = 'none';
-        try {
-            localStorage.setItem('alipay_qr_data', dataUrl);
-        } catch(err) {}
     };
-    reader.readAsDataURL(file);
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(wechat).then(showSuccessMsg).catch(function() {
+            fallbackCopy(wechat, showSuccessMsg);
+        });
+    } else {
+        fallbackCopy(wechat, showSuccessMsg);
+    }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initQrCode);
-} else {
-    initQrCode();
+function fallbackCopy(text, callback) {
+    var tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    try {
+        document.execCommand('copy');
+        if (callback) callback();
+    } catch (e) {
+        console.warn('Copy fallback failed', e);
+    }
+    document.body.removeChild(tempInput);
 }
 
-function openPaymentModal() {
-    var modal = document.getElementById('paymentModal');
+// 二维码图片加载与回退处理
+function handleQrError(imgEl, placeholderId) {
+    if (!imgEl) return;
+    var candidates = [
+        './assets/alipay-qr.jpg',
+        './alipay-qr.jpg',
+        './alipay-19.9.jpg',
+        'assets/alipay-qr.jpg',
+        'alipay-qr.jpg'
+    ];
+    var currentTry = parseInt(imgEl.dataset.tryIndex || '0', 10);
+    if (currentTry < candidates.length) {
+        var nextCandidate = candidates[currentTry];
+        imgEl.dataset.tryIndex = (currentTry + 1).toString();
+        if (imgEl.getAttribute('src') !== nextCandidate) {
+            imgEl.src = nextCandidate;
+            return;
+        } else if (currentTry + 1 < candidates.length) {
+            imgEl.dataset.tryIndex = (currentTry + 2).toString();
+            imgEl.src = candidates[currentTry + 1];
+            return;
+        }
+    }
+    imgEl.style.display = 'none';
+    var placeholder = document.getElementById(placeholderId);
+    if (placeholder) placeholder.style.display = 'flex';
+}
+
+function handleQrSuccess(imgEl, placeholderId) {
+    if (imgEl) imgEl.style.display = 'block';
+    var placeholder = document.getElementById(placeholderId);
+    if (placeholder) placeholder.style.display = 'none';
+}
+
+// 两个独立层级弹窗的开闭控制
+function openModal19() {
+    var modal = document.getElementById('modal-tier-19');
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 }
 
-function closePaymentModal() {
-    var modal = document.getElementById('paymentModal');
+function closeModal19() {
+    var modal = document.getElementById('modal-tier-19');
     if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
 }
 
+// 兼容别名
+function openModal99() {
+    openModal19();
+}
+
+function closeModal99() {
+    closeModal19();
+}
+
+function openModal189() {
+    var modal = document.getElementById('modal-tier-189');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal189() {
+    var modal = document.getElementById('modal-tier-189');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// 统一与兼容旧调用
+function openPaymentModal(tier) {
+    if (tier === '189' || tier === 189) {
+        openModal189();
+    } else {
+        openModal19();
+    }
+}
+
+function closePaymentModal() {
+    closeModal19();
+    closeModal189();
+}
+
 function handleModalBackdropClick(event) {
-    if (event.target && event.target.id === 'paymentModal') {
-        closePaymentModal();
+    if (event.target && event.target.classList.contains('modal-overlay')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 
@@ -2150,8 +3603,47 @@ function calcMatrix() {
         totalPill.innerHTML = '数字总频次：<strong>' + totalDigitsSum + '</strong> (衍生和: ' + A + ', 根数: ' + B + ')';
     }
 
+    // 免费部分：动态生成 1–9 数字分布速览
+    var distGrid = document.getElementById('freeNumberDistributionGrid');
+    if (distGrid) {
+        var gridHtml = '';
+        for (var d = 1; d <= 9; d++) {
+            var dTimes = counts[d];
+            var dClass = dTimes > 0 ? 'is-active' : 'is-missing';
+            gridHtml += 
+                '<div class="free-dist-item ' + dClass + '">' +
+                    '<div class="free-dist-badge">' + d + '</div>' +
+                    '<div class="free-dist-name">' + cellMeta[d].zh + '</div>' +
+                    '<div class="free-dist-cnt">' + (dTimes > 0 ? (dTimes + ' 次') : '缺数') + '</div>' +
+                '</div>';
+        }
+        distGrid.innerHTML = gridHtml;
+    }
+
     // 生成八大维度的深度个性化分析报告
     generateEightDimensionsReport(counts, A, B, C, D, activeCount, totalDigitsSum);
+
+    // 缓存完整的命盘记录供专属报告使用
+    window.currentMatrixRecord = {
+        day: day,
+        month: month,
+        year: year,
+        dd: dd,
+        mm: mm,
+        yyyy: yyyy,
+        A: A,
+        B: B,
+        C: C,
+        D: D,
+        counts: counts,
+        activeCount: activeCount,
+        totalDigitsSum: totalDigitsSum
+    };
+
+    // 如果用户已解锁，同步更新 9 大维度专属分析报告
+    if (window.isPersonalReportUnlocked) {
+        renderNineDimensionsPersonalReading(window.currentMatrixRecord);
+    }
 
     resultDiv.style.display = 'block';
 
@@ -2333,6 +3825,395 @@ function generateEightDimensionsReport(counts, A, B, C, D, activeCount, totalSum
     document.getElementById('rep-08-hl').textContent = highlightQuote;
 }
 
+// ==========================================
+// 付款确认与专属命盘分析报告展示逻辑
+// ==========================================
+function confirmPaymentAndShowReport() {
+    closeModal19();
+    window.isPersonalReportUnlocked = true;
+
+    // 确保当前有计算结果；若用户尚未计算，则使用输入框日期或默认示范日期触发计算
+    if (!window.currentMatrixRecord) {
+        var dVal = document.getElementById('day').value.trim();
+        var mVal = document.getElementById('month').value.trim();
+        var yVal = document.getElementById('year').value.trim();
+        if (!dVal || !mVal || !yVal) {
+            fillExample('18', '8', '1999');
+        } else {
+            calcMatrix();
+        }
+    }
+
+    if (window.currentMatrixRecord) {
+        renderNineDimensionsPersonalReading(window.currentMatrixRecord);
+    }
+
+    var reportSec = document.getElementById('personalReadingReportSection');
+    if (reportSec) {
+        reportSec.style.display = 'block';
+        setTimeout(function() {
+            reportSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+    }
+}
+
+function smoothScrollToTop() {
+    var resultEl = document.getElementById('result');
+    if (resultEl && resultEl.style.display !== 'none') {
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// ==========================================
+// 九大维度个人专属命盘深度分析报告生成引擎
+// 严谨基于：输入生日、方阵数字、重复数、缺失数、连线、生命根数
+// ==========================================
+function renderNineDimensionsPersonalReading(rec) {
+    if (!rec) return;
+    var counts = rec.counts;
+    var A = rec.A;
+    var B = rec.B;
+    var C = rec.C;
+    var D = rec.D;
+    var activeCount = rec.activeCount;
+    var totalDigitsSum = rec.totalDigitsSum;
+    var dd = rec.dd;
+    var mm = rec.mm;
+    var yyyy = rec.yyyy;
+
+    // 1. 统计缺失数字与高频重复数字
+    var missingDigits = [];
+    var repeatedDigits = [];
+    var maxFreq = 0;
+    var maxDigits = [];
+    for (var n = 1; n <= 9; n++) {
+        var cnt = counts[n] || 0;
+        if (cnt === 0) missingDigits.push(n);
+        if (cnt >= 2) repeatedDigits.push(n);
+        if (cnt > maxFreq) maxFreq = cnt;
+    }
+    for (var n = 1; n <= 9; n++) {
+        if ((counts[n] || 0) === maxFreq && maxFreq > 0) {
+            maxDigits.push(n);
+        }
+    }
+
+    // 2. 连线判断
+    var lines = {
+        spine: (counts[1] > 0 && counts[4] > 0 && counts[7] > 0),       // 1-4-7
+        family: (counts[2] > 0 && counts[5] > 0 && counts[8] > 0),      // 2-5-8
+        society: (counts[3] > 0 && counts[6] > 0 && counts[9] > 0),     // 3-6-9
+        selfWorth: (counts[1] > 0 && counts[2] > 0 && counts[3] > 0),   // 1-2-3
+        wealth: (counts[4] > 0 && counts[5] > 0 && counts[6] > 0),      // 4-5-6
+        talent: (counts[7] > 0 && counts[8] > 0 && counts[9] > 0),      // 7-8-9
+        spiritual: (counts[1] > 0 && counts[5] > 0 && counts[9] > 0),   // 1-5-9
+        acumen: (counts[7] > 0 && counts[5] > 0 && counts[3] > 0)       // 7-5-3
+    };
+
+    // 3. 更新档案摘要元数据条
+    var metaDateEl = document.getElementById('repMetaDate');
+    if (metaDateEl) metaDateEl.textContent = dd + '.' + mm + '.' + yyyy;
+
+    var rootTitles = {
+        1: '1 · 领创与开拓型',
+        2: '2 · 敏锐与共感型',
+        3: '3 · 灵动与表达型',
+        4: '4 · 秩序与筑基型',
+        5: '5 · 探索与变革型',
+        6: '6 · 滋养与守护型',
+        7: '7 · 哲思与洞见型',
+        8: '8 · 统筹与丰盛型',
+        9: '9 · 远见与博爱型'
+    };
+    var metaRootEl = document.getElementById('repMetaRoot');
+    if (metaRootEl) metaRootEl.textContent = rootTitles[B] || (B + ' 号生命根数');
+
+    var metaDerivEl = document.getElementById('repMetaDeriv');
+    if (metaDerivEl) metaDerivEl.textContent = A + ' / ' + B + ' / ' + C + ' / ' + D;
+
+    var metaGridEl = document.getElementById('repMetaGrid');
+    if (metaGridEl) metaGridEl.textContent = activeCount + ' / 9 宫 (总频次 ' + totalDigitsSum + ')';
+
+    // ----------------------------------------------------
+    // 01 主体性格 PRIMARY PERSONALITY
+    // ----------------------------------------------------
+    var rootThemes = {
+        1: { name: '开拓主导型', badge: '自主意志 · 目标笃定 · 领地边界清晰', core: '自带强烈的自我驱动力与主心骨。你习惯用主动出击的方式应对外界的不确定性，对人生节奏拥有极高的掌控度。' },
+        2: { name: '敏锐共感型', badge: '细致洞察 · 关系平衡 · 情绪感知力极强', core: '内心世界极其细腻通透，善于捕捉人际互动中微小的情绪流动与氛围变化，注重合作与深层信任。' },
+        3: { name: '创想表达型', badge: '思维跳跃 · 极富感染力 · 热情且好奇', core: '思维活跃、语汇充沛，拥有迅速将枯燥逻辑转化为生动概念的天然魅力，抗拒机械与一成不变。' },
+        4: { name: '秩序稳固型', badge: '踏实务实 · 框架意识严密 · 极具长久耐心', core: '追求底层确定性与严谨的流程逻辑。你注重步步为营的落地执行，是环境中极为可靠的压舱石。' },
+        5: { name: '突破探索型', badge: '适应力极强 · 破除常规 · 追求体验与自由', core: '骨子里热爱多元探索，反感被教条所束缚。你具备快速切换赛道与适应复杂新环境的高弹性。' },
+        6: { name: '滋养守护型', badge: '责任担当 · 审美敏锐 · 守护力与利他情怀', core: '对身边的亲近之人拥有天然的保护欲与付出倾向。你在生活格调、美学与人际温情上有着严格的品质追求。' },
+        7: { name: '哲思洞见型', badge: '清醒独立 · 追问本质 · 观察者理性视角', core: '习惯站在略微抽离的位置审视周遭世界。你从不盲从世俗结论，必须亲身验证或逻辑闭环后才会真正信服。' },
+        8: { name: '宏图统筹型', badge: '大局观坚实 · 资源整合力 · 追求长远影响力', core: '拥有天然的战略视野与现实抱负。你懂得调动各方要素实现宏大目标，追求长期沉淀的真实价值。' },
+        9: { name: '大爱愿景型', badge: '格局高远 · 包容慈悲 · 追求超越性价值', core: '视野超越一时一地之得失，具备宽广的利他格局与精神抱负，常能以更大的时空尺度理解事物规律。' }
+    };
+
+    var rInfo = rootThemes[B] || rootThemes[1];
+    var dim01Badge = rInfo.name + ' ｜ ' + rInfo.badge;
+
+    var oneCount = counts[1] || 0;
+    var oneDesc = '';
+    if (oneCount >= 3) {
+        oneDesc = '在方阵中，你的 1 号字符号化为自我的意志基石，出现了 ' + oneCount + ' 次之多。这赋予你极为坚定的主观意志，自我要求极高，极难被他人非议动摇，习惯凡事亲力亲为并独当一面。';
+    } else if (oneCount === 2) {
+        oneDesc = '在方阵中，你的 1 号字出现了 2 次，属于自我意志与倾听包容的平衡格局。你既有清晰坚定的个人底线，也能兼顾他人的立场，在独立与协作之间进退自如。';
+    } else if (oneCount === 1) {
+        oneDesc = '在方阵中，你的 1 号字出现 1 次。你的处事风格温润克制，尊重环境与他人的节奏，比起高调的主张，你更倾向于用默默耕耘与事实说话。';
+    } else {
+        oneDesc = '在方阵中缺少 1 号字，表明你性格中没有膨胀的自我执念，善于顺应大局，但有时需要练习更直接地捍卫自己的正当需求。';
+    }
+
+    var dim01Body = '<p>你的生命核心根数为 <strong>' + B + '</strong>，衍生总和为 <strong>' + A + '</strong>。' + rInfo.core + '</p>' +
+                    '<p>' + oneDesc + ' 结合你的出生日期（' + dd + ' 日），你的行为底层自带一种内在的笃定感。在面对外界环境的纷扰与突发变动时，你会迅速在内心建立评估与应对系统，不会轻易交出内心的主导权。</p>';
+    var dim01Point = '✦ 心理原型定位：具备【' + rInfo.name + '】的核心心智，在核心原则上始终拥有清醒的自我中心轴。';
+
+    // ----------------------------------------------------
+    // 02 隐藏特质 UNCONSCIOUS DRIVE
+    // ----------------------------------------------------
+    var hiddenAspects = [];
+    if (repeatedDigits.length > 0) {
+        var repListStr = repeatedDigits.join('、');
+        hiddenAspects.push('命盘中数字 <strong>' + repListStr + '</strong> 呈现多次强化（高频共振），构成了你潜意识深处最强大的暗流。');
+        if (counts[9] >= 2) {
+            hiddenAspects.push('例如 9 的多次出现，让你外表随和甚至略显随性，但在精神世界里其实有一套严苛的道德准绳与精神洁癖，任何虚伪都会被你一眼识破。');
+        }
+        if (counts[2] >= 2) {
+            hiddenAspects.push('例如 2 的多次出现，让你自带高灵敏度的“潜意识情绪雷达”。在未言说之前，你往往就已经感知到对方的犹豫或情绪起伏，因而容易隐形承担他人的负面能量。');
+        }
+        if (counts[1] >= 3) {
+            hiddenAspects.push('1 的高频聚集，让你骨子里极度倔强，哪怕承受巨大的压力，你也习惯在人前保持体面从容，极少向外界示弱或抱怨。');
+        }
+        if (counts[7] >= 2) {
+            hiddenAspects.push('7 的重复聚集，赋予你极深的反刍思考能力，在社交之后往往需要大量属于自己的静默时间来消化外界的信息。');
+        }
+        if (counts[8] >= 2) {
+            hiddenAspects.push('8 的多次出现，赋予你沉潜的现实洞察与长线企图心，在风平浪静的表象下时刻在脑海中推演长远的资源配置与安全边界。');
+        }
+    } else {
+        hiddenAspects.push('你的方阵各数字分布均匀，属于难得的平稳协调架构。你隐藏的特质在于“极强的心理自愈与调适弹性”。');
+    }
+
+    var dim02Badge = '潜意识防御 · 隐秘能量流 · 衍生底数 C=' + C + ' / D=' + D;
+    var dim02Body = '<p>' + hiddenAspects.join(' ') + '</p>' +
+                    '<p>根据毕达哥拉斯第三与第四衍生数（C=' + C + '，D=' + D + '），你的潜意识底色形成于成长历程中对安全感与确定性的深刻体验。许多人只能看到你呈现于外的角色，但在无人打扰的独处时光里，你其实比任何人都在意事情的纯粹性与精神的自洽。</p>';
+    var dim02Point = '✦ 盲区提醒：允许自己偶尔卸下防备，展现真实的困惑并不影响你的体面与力量。';
+
+    // ----------------------------------------------------
+    // 03 优势天赋 INNATE TALENTS
+    // ----------------------------------------------------
+    var dim03Badge = '';
+    var dim03Body = '';
+    var dim03Point = '';
+
+    if (lines.society) {
+        dim03Badge = '完整 3-6-9 智识闭环 · 体系化建构 · 战略洞察';
+        dim03Body = '<p>你的方阵完整贯通了 <strong>3-6-9 智识与智慧连线</strong>。在认知机制上，你具备将纷乱信息迅速梳理为结构化模型的天赋。你能够跨过低维度的重复劳作，直接看清事情的骨架与因果链条，在战略规划、知识传授与复杂判断上极具穿透力。</p>';
+    } else if (lines.spine) {
+        dim03Badge = '完整 1-4-7 生命脊梁 · 极强抗压耐受 · 长期主义落地';
+        dim03Body = '<p>你的方阵完整贯通了 <strong>1-4-7 生命脊梁连线</strong>。你的核心优势在于沉稳的“长跑耐力”与落地能力。当别人因为外部变动或短期挫折而浮躁退出时，你却能耐受周期，通过扎实的持续积累构筑出坚实的壁垒。</p>';
+    } else if (lines.talent) {
+        dim03Badge = '完整 7-8-9 天赋使命线 · 资源整合 · 高维社会价值';
+        dim03Body = '<p>你的方阵完整贯通了 <strong>7-8-9 赋能连线</strong>。你拥有跨界调配资源、赋能他人并达成宏大目标的天然悟性。你擅长站在宏观高度思考问题，常常在无形之中吸引到高质量的合作伙伴与关键支持。</p>';
+    } else if (lines.spiritual) {
+        dim03Badge = '完整 1-5-9 灵性直觉线 · 前瞻预判 · 穿透性直觉';
+        dim03Body = '<p>你的方阵完整贯通了 <strong>1-5-9 灵性直觉连线</strong>。你对人事物的发展趋势拥有一种超前的预判感，哪怕在缺乏完整数据时，你的直觉往往也是惊人准确的。这是极具辨识度的高阶认知优势。</p>';
+    } else {
+        var topDig = maxDigits.length > 0 ? maxDigits.join(' & ') : '核心数';
+        dim03Badge = '垂直穿透型天赋 · 数字 ' + topDig + ' 极致聚焦';
+        dim03Body = '<p>你的命盘以数字 <strong>' + topDig + '</strong> 构筑了独特的认知强项。你不是泛而不精的通才，而是能够在自己认准的细分专业里做到极致的深耕型人才。只要将你置于能够深度钻研的专业位置，你就能爆发出数倍于常人的专注度。</p>';
+    }
+    dim03Point = '✦ 天赋运用原则：拒绝琐碎耗损，将核心认知精力锁定在高复利、需要深度判断的业务上。';
+
+    // ----------------------------------------------------
+    // 04 财富路径 WEALTH PATH
+    // ----------------------------------------------------
+    var dim04Badge = '';
+    var dim04Body = '';
+    var dim04Point = '';
+
+    var wealthHas4 = (counts[4] || 0) > 0;
+    var wealthHas8 = (counts[8] || 0) > 0;
+    var wealthHas5 = (counts[5] || 0) > 0;
+    var wealthHas6 = (counts[6] || 0) > 0;
+
+    if (lines.wealth) {
+        dim04Badge = '4-5-6 务实创富通道贯通 · 系统复利 · 专业资产化';
+        dim04Body = '<p>你的命盘中 <strong>4-5-6 物质与财富连线</strong> 完备通畅！这意味着你的财富通道天然与“标准化产品、组织体系与长期信用”绑定。最适合你的赚钱路径不是追逐投机风口，而是打造属于你自己的专业服务体系或资产基石，依靠口碑与时间的复利稳步扩容。</p>';
+    } else if (lines.acumen) {
+        dim04Badge = '7-5-3 敏锐商机线贯通 · 趋势捕捉 · 信息与人际价值转化';
+        dim04Body = '<p>你的命盘中具备 <strong>7-5-3 商业嗅觉连线</strong>。你善于在变局中发现别人忽略的信息差与新兴需求。通过整合上下游资源、扮演关键桥梁或抓住新周期的红利，你能以极高的杠杆率实现财富跃升。</p>';
+    } else if (wealthHas8) {
+        dim04Badge = '8 号丰盛杠杆 · 平台借力 · 组织与物质落地';
+        dim04Body = '<p>命盘中点亮了关键财富数字 <strong>8</strong>。你天然懂得利用组织、平台或合作杠杆来放大个人价值。对你而言，单纯出卖体力的回报上限有限，唯有搭建协作系统、担任统筹协调者，财富才会源源不断地向你汇聚。</p>';
+    } else if (wealthHas4 && wealthHas6) {
+        dim04Badge = '4 & 6 双基石守成 · 高质量交付 · 稳健现金流';
+        dim04Body = '<p>你的数字 4（严密风控）与 6（价值交付）紧密配合。你的财富增长遵循“稳扎稳打、只赚看得到的确定性收益”模式。你对风险有着天然的嗅觉，极其擅长守住核心本金并建立健康的现金流循环。</p>';
+    } else {
+        dim04Badge = '创造力变现模式 · 个人 IP 沉淀 · 需防范财务盲区';
+        dim04Body = '<p>你的方阵在世俗物质数字上较为精简，表明你对金钱本身没有狭隘的执念，更看重事情本身的意义与创造性乐趣。你的最佳创富方式是将个人审美、专业判断或无形智慧转化为版权、IP 或高溢价咨询；同时务必建立稳健的储蓄规则或与严谨的财务伙伴合作，防止“挣得多却存不住”。</p>';
+    }
+    dim04Point = '✦ 财富避坑指南：严防被他人的盲目狂热煽动；坚持只在自己能看懂底层逻辑的领域进行价值交换。';
+
+    // ----------------------------------------------------
+    // 05 能量模式 VITAL ENERGY
+    // ----------------------------------------------------
+    var dim05Badge = '九宫激活: ' + activeCount + '/9 · 节律：' + (activeCount >= 7 ? '全频弹性响应' : '高聚焦脉冲型');
+    var dim05Body = '';
+    var dim05Point = '';
+
+    if (activeCount >= 7) {
+        dim05Body = '<p>你激活了 9 宫中的 <strong>' + activeCount + '</strong> 处，整体能量频次高达 ' + totalDigitsSum + '。这赋予你非常全面的环境适应力与抗压韧性，无论被置于哪个领域，你都能迅速建立应对机制。然而，全频段能量的代价是<strong>容易精力分散</strong>，常常在不知不觉中背负了过多不属于自己的琐碎责任。</p>';
+    } else {
+        dim05Body = '<p>你激活了 9 宫中的 <strong>' + activeCount + '</strong> 处，属于典型的<strong>高密度聚焦型能量场</strong>。对于不感兴趣的人和事，你连一秒钟的寒暄都觉得耗竭；而一旦进入你的兴奋主场，你能够进入数天专注的心流状态。你的能量必须像激光一样聚焦，切忌陷入无意义的社交消耗。</p>';
+    }
+
+    var twoCnt = counts[2] || 0;
+    if (twoCnt >= 2) {
+        dim05Body += '<p>尤其需要注意的是，你的数字 2 出现了 ' + twoCnt + ' 次，代表你的情绪体像一块高灵敏海绵。长期待在负能量密集、充满争端或杂乱的环境中会导致你生理性的疲惫。建立每天属于自己的独处“能量消磁时间”对你而言是刚需。</p>';
+    } else {
+        dim05Body += '<p>你的情感耐受度较为稳定，能够客观就事论事。但需要留意身体机能的信号，不要因为惯性冲刺而忽略了身体的微小提示，制定固定的作息节律是维持长效精力的底气。</p>';
+    }
+    dim05Point = '✦ 充能方式：亲近自然、静默独处、物理整理生活空间，切断一切消耗性的人际拉扯。';
+
+    // ----------------------------------------------------
+    // 06 情感表达 EMOTIONAL EXPRESSION
+    // ----------------------------------------------------
+    var dim06Badge = '';
+    var dim06Body = '';
+    var dim06Point = '';
+
+    if (lines.family) {
+        dim06Badge = '2-5-8 亲密守护线完整 · 深情忠诚 · 极度看重情感确定性';
+        dim06Body = '<p>你的方阵拥有完整通达的 <strong>2-5-8 情感与家庭连线</strong>。在亲密关系中，你是一个极其珍视承诺与安全感的伴侣。你不会轻易对人敞开心扉，但一旦认定对方，就会展现出惊人的包容与托举力量，愿意成为对方背后最坚实的后盾。</p>';
+    } else if (counts[2] >= 2 && counts[6] >= 1) {
+        dim06Badge = '细腻守护型 · 细节体贴 · 需防范“过度付出带来的委屈感”';
+        dim06Body = '<p>你在亲密关系中习惯通过周全的照料与情绪托底来表达爱意。你能够体贴对方未曾言说的脆弱。然而，你最需要警惕的是“暗中期待对方给出同等回馈”的心理。当付出与回报失衡时，容易在内心积攒委屈。学会坦然提出自己的真实需求，关系才会真正松弛。</p>';
+    } else if (counts[1] >= 2 && counts[2] <= 1) {
+        dim06Badge = '行动解决型 · 务实克制 · 爱在言语之外';
+        dim06Body = '<p>你更习惯用“解决实际困难、提供现实保障”的方式来践行爱。对于花哨的情话或过度情绪化的拉扯，你天生感到排斥甚至不知所措。有时伴侣可能会觉得你略显理性冷静，适当多表达内心的柔软温存，能让亲密流动更加顺畅。</p>';
+    } else {
+        dim06Badge = '深沉克制型 · 精神共鸣导向 · 界限感分明';
+        dim06Body = '<p>你在感情中是典型的“慢热但长情”。比起频繁的粘腻，你更渴望两个独立灵魂之间的智识对等与精神契合。你对个人边界有着很高的敬畏，同时也给予伴侣充分的自由与信任。</p>';
+    }
+    dim06Point = '✦ 关系相处之道：健康的亲密不是彼此捆绑，而是两个完整自我之间的相映生辉。';
+
+    // ----------------------------------------------------
+    // 07 内在课题 CORE LIFE LESSONS
+    // ----------------------------------------------------
+    var dim07Badge = '';
+    var dim07Body = '';
+    var dim07Point = '';
+
+    var lessonMap = {
+        2: '缺 2：练习示弱与依赖，允许他人进入你的内心深处，不必时刻扮演全能战神；',
+        3: '缺 3：练习将丰富深邃的内在体验转化为生动语言，不要把心事全部闷在心底；',
+        4: '缺 4：练习耐受琐碎的细节与周期的重复，构筑稳固的底层秩序与财务契约；',
+        5: '缺 5：练习拥抱变化与突发意外，学会从不可控的失序中看见新的转机；',
+        6: '缺 6：练习接纳不完美，放下对自己与至亲之人的隐性苛求；',
+        7: '缺 7：练习建立对命运与未知的深层信任，减少对风险的过度焦虑与自我怀疑；',
+        8: '缺 8：练习正视并坦然驾驭物质权力与野心，不必以道德包袱抑制自己的丰盛；',
+        9: '缺 9：练习从微观的执着中抽身，站在更宏观的生命全景俯瞰一时的得失。'
+    };
+
+    if (missingDigits.length > 0) {
+        dim07Badge = '演进重点：缺数 [' + missingDigits.join('、') + '] · 阴影整合与心性补全';
+        var lessonItems = [];
+        for (var mi = 0; mi < missingDigits.length; mi++) {
+            var mNum = missingDigits[mi];
+            if (lessonMap[mNum]) lessonItems.push(lessonMap[mNum]);
+        }
+        dim07Body = '<p>在毕达哥拉斯哲学中，<strong>缺失的数字从来不是缺陷，而是生命在这一生主动选择修习的进阶科目</strong>。</p>' +
+                    '<p>对照你的方阵，你当前的核心成长命题集中于：<br />' +
+                    lessonItems.join('<br />') + '</p>' +
+                    '<p>每一次在这些领域感到阻滞或情绪受挫，都不是命运的惩罚，而是命盘在温柔提醒你：是时候调动觉察，跨越以往的自动化思维惯性了。</p>';
+    } else {
+        dim07Badge = '九宫全通 · 核心课题：减法艺术与破除内耗';
+        dim07Body = '<p>你的方阵中 1 至 9 无一缺失，属于极其均衡的多能格局。然而你最大的内在课题恰恰是<strong>“如何做减法”</strong>。因为什么都能做、什么都看得懂，容易让你陷入选择困难，甚至把精力平摊在过多平庸的事务上。学会果断割舍次要枝节，是你实现质变的关键。</p>';
+    }
+    dim07Point = '✦ 修炼心法：不与自身的短板死磕，而是通过觉察与合作，让短板不再成为发展瓶颈。';
+
+    // ----------------------------------------------------
+    // 08 成长方向 GROWTH ROADMAP
+    // ----------------------------------------------------
+    var dim08Badge = '三阶跃迁法 · 认知重构 → 优势聚焦 → 能量自洽';
+    var dim08Body = '<p>基于你的命盘结构，推荐以下三个阶段的进化路径：</p>' +
+                    '<p><strong>① 第一阶段【觉察破局】：</strong> 辨识自动化情绪反应。当再次感到焦虑或被冒犯时，迅速抽离出 10 秒钟，观察是哪个性格特质在受惊吓，不被惯性冲动绑架。</p>' +
+                    '<p><strong>② 第二阶段【优势压舱】：</strong> 紧紧扣住你的核心数字（生命根数 ' + B + ' 与衍生和 ' + A + '），将 80% 的精力投入到最具掌控力与热爱的核心阵地，打造不可撼动的个人专业护城河。</p>' +
+                    '<p><strong>③ 第三阶段【整合丰盛】：</strong> 在精神追求与现实物质之间建立对流通路，既保持内心的清明与原则，又能坦然享受世俗世界的丰饶成果，达成从容自洽的高维状态。</p>';
+    var dim08Point = '✦ 行动指引：未来 90 天内，至少推掉一件不属于你核心目标的消耗性事务，把时间还给深耕。';
+
+    // ----------------------------------------------------
+    // 09 人生使命 SOUL PURPOSE (独幅大格局 Editorial 呈现)
+    // ----------------------------------------------------
+    var missionQuotes = {
+        1: '“成为自己生命旷野上的点灯人，以笃定的意志劈开荆棘，照亮前路，亦给身后者以力量。”',
+        2: '“在坚硬喧嚣的世间守护一处清澈的共情之泉，用深刻的理解弥合分歧，抚慰人心。”',
+        3: '“以灵动的文字、思想与表达作为桥梁，唤醒沉闷的日常，为世界注入生机与明亮。”',
+        4: '“在浮躁与变幻莫测的时代建立经得起推敲的秩序基石，做最让人心安的筑城者。”',
+        5: '“勇敢打破狭隘的认知边界，成为穿越未知风浪的破风者，探索生命最大的广度。”',
+        6: '“将美感、责任与温暖具象化为现实的守护，滋养每一处与你相遇的生命土壤。”',
+        7: '“穿透表象直达真理的本质，做冷静清醒的时代思想者与灵魂的探寻者。”',
+        8: '“调动世俗丰盛的物质与组织力量，让崇高的理想在现实土壤中开花结果，创造深远价值。”',
+        9: '“超越个人得失的狭窄视角，将个人的才智奉献给更崇高的集体福祉，活成一道温暖纯净的光。”'
+    };
+
+    var mQuote = missionQuotes[B] || missionQuotes[1];
+    var dim09QuoteEl = document.getElementById('dim-09-quote');
+    if (dim09QuoteEl) dim09QuoteEl.textContent = mQuote;
+
+    var dim09Prose = '<p>你的整个毕达哥拉斯命盘（生日 ' + dd + '.' + mm + '.' + yyyy + '，衍生数 ' + A + '/' + B + '/' + C + '/' + D + '）描绘的不是一副被命运束缚的锁链，而是一份属于你灵魂的原始能量地图。</p>' +
+                     '<p>你来到这个世界上，并不是为了成为一个符合所有人期许的平庸标本，而是要将属于你的独特数字密码彻底活透。无论眼下你正在经历人生的哪个季节，请记住：你内在的构件完备而神圣，所有的经验、裂痕与沉淀，都在为你最终承载更大的使命做准备。</p>';
+    var dim09BodyEl = document.getElementById('dim-09-body');
+    if (dim09BodyEl) dim09BodyEl.innerHTML = dim09Prose;
+
+    var dim09TipEl = document.getElementById('dim-09-tip');
+    if (dim09TipEl) dim09TipEl.textContent = '✦ 终极提醒：毕达哥拉斯方阵是内心的指引罗盘，而每一步的航向与高度，永远由你亲自执掌。';
+
+    // 填入各个卡片节点
+    var setEl = function(id, content, isHtml) {
+        var el = document.getElementById(id);
+        if (el) {
+            if (isHtml) el.innerHTML = content;
+            else el.textContent = content;
+        }
+    };
+
+    setEl('dim-01-badge', dim01Badge, false);
+    setEl('dim-01-body', dim01Body, true);
+    setEl('dim-01-point', dim01Point, false);
+
+    setEl('dim-02-badge', dim02Badge, false);
+    setEl('dim-02-body', dim02Body, true);
+    setEl('dim-02-point', dim02Point, false);
+
+    setEl('dim-03-badge', dim03Badge, false);
+    setEl('dim-03-body', dim03Body, true);
+    setEl('dim-03-point', dim03Point, false);
+
+    setEl('dim-04-badge', dim04Badge, false);
+    setEl('dim-04-body', dim04Body, true);
+    setEl('dim-04-point', dim04Point, false);
+
+    setEl('dim-05-badge', dim05Badge, false);
+    setEl('dim-05-body', dim05Body, true);
+    setEl('dim-05-point', dim05Point, false);
+
+    setEl('dim-06-badge', dim06Badge, false);
+    setEl('dim-06-body', dim06Body, true);
+    setEl('dim-06-point', dim06Point, false);
+
+    setEl('dim-07-badge', dim07Badge, false);
+    setEl('dim-07-body', dim07Body, true);
+    setEl('dim-07-point', dim07Point, false);
+
+    setEl('dim-08-badge', dim08Badge, false);
+    setEl('dim-08-body', dim08Body, true);
+    setEl('dim-08-point', dim08Point, false);
+}
+
 // 绑定回车键快捷提交
 ['day', 'month', 'year'].forEach(function(id) {
     var el = document.getElementById(id);
@@ -2344,6 +4225,29 @@ function generateEightDimensionsReport(counts, A, B, C, D, activeCount, totalSum
         });
     }
 });
+
+// 双重保底绑定付费弹窗触发按钮，确保各平台移动端和桌面端均能即时响应
+function initPaymentButtons() {
+    var btnUnlock = document.getElementById('btn-unlock-personal');
+    if (btnUnlock) {
+        btnUnlock.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal19();
+        });
+    }
+    var btn189 = document.getElementById('btn-book-189');
+    if (btn189) {
+        btn189.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal189();
+        });
+    }
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPaymentButtons);
+} else {
+    initPaymentButtons();
+}
 </script>
 </body>
 </html>
